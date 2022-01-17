@@ -13,18 +13,34 @@
 		FC1748BC278F9E9300C63F40 /* AssetManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FC1748BA278F9E9300C63F40 /* AssetManager.hpp */; };
 		FC1748C0278FAC8C00C63F40 /* LightSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1748BE278FAC8C00C63F40 /* LightSource.cpp */; };
 		FC1748C1278FAC8C00C63F40 /* LightSource.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FC1748BF278FAC8C00C63F40 /* LightSource.hpp */; };
+		FC17C598279628D600F3213B /* FLAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C596279628D600F3213B /* FLAC.framework */; };
+		FC17C599279628D600F3213B /* FLAC.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C596279628D600F3213B /* FLAC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C59A279628D600F3213B /* freetype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C597279628D600F3213B /* freetype.framework */; };
+		FC17C59B279628D600F3213B /* freetype.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C597279628D600F3213B /* freetype.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5A2279628FC00F3213B /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59C279628FC00F3213B /* sfml-window.framework */; };
+		FC17C5A3279628FC00F3213B /* sfml-window.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C59C279628FC00F3213B /* sfml-window.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5A4279628FC00F3213B /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59D279628FC00F3213B /* sfml-system.framework */; };
+		FC17C5A5279628FC00F3213B /* sfml-system.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C59D279628FC00F3213B /* sfml-system.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5A6279628FC00F3213B /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59E279628FC00F3213B /* sfml-audio.framework */; };
+		FC17C5A7279628FC00F3213B /* sfml-audio.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C59E279628FC00F3213B /* sfml-audio.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5A8279628FC00F3213B /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59F279628FC00F3213B /* sfml-graphics.framework */; };
+		FC17C5A9279628FC00F3213B /* sfml-graphics.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C59F279628FC00F3213B /* sfml-graphics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5AA279628FC00F3213B /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5A0279628FC00F3213B /* sfml-network.framework */; };
+		FC17C5AB279628FC00F3213B /* sfml-network.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5A0279628FC00F3213B /* sfml-network.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5AC279628FC00F3213B /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5A1279628FC00F3213B /* SFML.framework */; };
+		FC17C5AD279628FC00F3213B /* SFML.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5A1279628FC00F3213B /* SFML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5B82796299000F3213B /* vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5AF2796296500F3213B /* vorbis.framework */; };
+		FC17C5B92796299000F3213B /* vorbis.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5AF2796296500F3213B /* vorbis.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5BA2796299200F3213B /* vorbisenc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B12796296500F3213B /* vorbisenc.framework */; };
+		FC17C5BB2796299200F3213B /* vorbisenc.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5B12796296500F3213B /* vorbisenc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5BC2796299300F3213B /* vorbisfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B02796296500F3213B /* vorbisfile.framework */; };
+		FC17C5BD2796299300F3213B /* vorbisfile.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5B02796296500F3213B /* vorbisfile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5BE2796299600F3213B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B22796296500F3213B /* OpenAL.framework */; };
+		FC17C5BF2796299600F3213B /* OpenAL.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5B22796296500F3213B /* OpenAL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC17C5C02796299700F3213B /* ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5AE2796296500F3213B /* ogg.framework */; };
+		FC17C5C12796299700F3213B /* ogg.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5AE2796296500F3213B /* ogg.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC424CE6278B6E33009DC34F /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC424CE5278B6E33009DC34F /* ResourcePath.mm */; };
 		FC424CE9278B6E33009DC34F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC424CE8278B6E33009DC34F /* main.cpp */; };
-		FC424D3B278B75F4009DC34F /* libsfml-system.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FC424D36278B75F4009DC34F /* libsfml-system.2.5.1.dylib */; };
-		FC424D3C278B75F4009DC34F /* libsfml-system.2.5.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC424D36278B75F4009DC34F /* libsfml-system.2.5.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FC424D3D278B75F4009DC34F /* libsfml-window.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FC424D37278B75F4009DC34F /* libsfml-window.2.5.1.dylib */; };
-		FC424D3E278B75F4009DC34F /* libsfml-window.2.5.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC424D37278B75F4009DC34F /* libsfml-window.2.5.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FC424D3F278B75F4009DC34F /* libsfml-audio.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FC424D38278B75F4009DC34F /* libsfml-audio.2.5.1.dylib */; };
-		FC424D40278B75F4009DC34F /* libsfml-audio.2.5.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC424D38278B75F4009DC34F /* libsfml-audio.2.5.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FC424D41278B75F4009DC34F /* libsfml-network.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FC424D39278B75F4009DC34F /* libsfml-network.2.5.1.dylib */; };
-		FC424D42278B75F4009DC34F /* libsfml-network.2.5.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC424D39278B75F4009DC34F /* libsfml-network.2.5.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FC424D43278B75F4009DC34F /* libsfml-graphics.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FC424D3A278B75F4009DC34F /* libsfml-graphics.2.5.1.dylib */; };
-		FC424D44278B75F4009DC34F /* libsfml-graphics.2.5.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC424D3A278B75F4009DC34F /* libsfml-graphics.2.5.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FC424D4B278B768C009DC34F /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC424D46278B768C009DC34F /* cute_image.jpg */; };
 		FC424D4C278B768C009DC34F /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = FC424D47278B768C009DC34F /* nice_music.ogg */; };
 		FC424D4D278B768C009DC34F /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC424D48278B768C009DC34F /* sansation.ttf */; };
@@ -40,9 +56,6 @@
 		FC424F28278B7D82009DC34F /* pixeboy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC424D59278B790F009DC34F /* pixeboy.ttf */; };
 		FC424F2C278B7E97009DC34F /* levelfullres.png in Resources */ = {isa = PBXBuildFile; fileRef = FC424F2A278B7E97009DC34F /* levelfullres.png */; };
 		FC424F2D278B7E97009DC34F /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = FC424F2B278B7E97009DC34F /* world.png */; };
-		FC424F30278B7ECD009DC34F /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC424F2E278B7ECD009DC34F /* Player.cpp */; };
-		FC424F33278B7F8F009DC34F /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC424F31278B7F8F009DC34F /* World.cpp */; };
-		FC424F37278B7FB0009DC34F /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC424F35278B7FB0009DC34F /* Tile.cpp */; };
 		FC424F3D278B843A009DC34F /* lightmap_sun.png in Resources */ = {isa = PBXBuildFile; fileRef = FC424F38278B843A009DC34F /* lightmap_sun.png */; };
 		FC424F3E278B843A009DC34F /* lamp.png in Resources */ = {isa = PBXBuildFile; fileRef = FC424F39278B843A009DC34F /* lamp.png */; };
 		FC424F3F278B843A009DC34F /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = FC424F3A278B843A009DC34F /* image.png */; };
@@ -97,17 +110,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FC424D45278B75F4009DC34F /* Embed Libraries */ = {
+		FC17C5952796280300F3213B /* Embed Libraries */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FC424D40278B75F4009DC34F /* libsfml-audio.2.5.1.dylib in Embed Libraries */,
-				FC424D3E278B75F4009DC34F /* libsfml-window.2.5.1.dylib in Embed Libraries */,
-				FC424D3C278B75F4009DC34F /* libsfml-system.2.5.1.dylib in Embed Libraries */,
-				FC424D44278B75F4009DC34F /* libsfml-graphics.2.5.1.dylib in Embed Libraries */,
-				FC424D42278B75F4009DC34F /* libsfml-network.2.5.1.dylib in Embed Libraries */,
+				FC17C5BB2796299200F3213B /* vorbisenc.framework in Embed Libraries */,
+				FC17C599279628D600F3213B /* FLAC.framework in Embed Libraries */,
+				FC17C5A7279628FC00F3213B /* sfml-audio.framework in Embed Libraries */,
+				FC17C5BF2796299600F3213B /* OpenAL.framework in Embed Libraries */,
+				FC17C59B279628D600F3213B /* freetype.framework in Embed Libraries */,
+				FC17C5A5279628FC00F3213B /* sfml-system.framework in Embed Libraries */,
+				FC17C5A3279628FC00F3213B /* sfml-window.framework in Embed Libraries */,
+				FC17C5AD279628FC00F3213B /* SFML.framework in Embed Libraries */,
+				FC17C5BD2796299300F3213B /* vorbisfile.framework in Embed Libraries */,
+				FC17C5AB279628FC00F3213B /* sfml-network.framework in Embed Libraries */,
+				FC17C5C12796299700F3213B /* ogg.framework in Embed Libraries */,
+				FC17C5B92796299000F3213B /* vorbis.framework in Embed Libraries */,
+				FC17C5A9279628FC00F3213B /* sfml-graphics.framework in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,16 +143,34 @@
 		FC1748BE278FAC8C00C63F40 /* LightSource.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LightSource.cpp; sourceTree = "<group>"; };
 		FC1748BF278FAC8C00C63F40 /* LightSource.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LightSource.hpp; sourceTree = "<group>"; };
 		FC17C4CD2795E08B00F3213B /* custom_imgui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = custom_imgui.h; sourceTree = "<group>"; };
+		FC17C56F2796210D00F3213B /* libsfml-network-d.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-network-d.3.0.0.dylib"; path = "../../../../usr/local/lib/libsfml-network-d.3.0.0.dylib"; sourceTree = "<group>"; };
+		FC17C5702796210D00F3213B /* libsfml-audio-d.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-audio-d.3.0.0.dylib"; path = "../../../../usr/local/lib/libsfml-audio-d.3.0.0.dylib"; sourceTree = "<group>"; };
+		FC17C5712796210D00F3213B /* libsfml-window-d.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-window-d.3.0.0.dylib"; path = "../../../../usr/local/lib/libsfml-window-d.3.0.0.dylib"; sourceTree = "<group>"; };
+		FC17C5722796210D00F3213B /* libsfml-window.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-window.3.0.0.dylib"; path = "../../../../usr/local/lib/libsfml-window.3.0.0.dylib"; sourceTree = "<group>"; };
+		FC17C5732796210D00F3213B /* libsfml-graphics.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-graphics.3.0.0.dylib"; path = "../../../../usr/local/lib/libsfml-graphics.3.0.0.dylib"; sourceTree = "<group>"; };
+		FC17C5742796210D00F3213B /* libsfml-system.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-system.3.0.0.dylib"; path = "../../../../usr/local/lib/libsfml-system.3.0.0.dylib"; sourceTree = "<group>"; };
+		FC17C5752796210D00F3213B /* libsfml-network.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-network.3.0.0.dylib"; path = "../../../../usr/local/lib/libsfml-network.3.0.0.dylib"; sourceTree = "<group>"; };
+		FC17C5762796210D00F3213B /* libsfml-audio.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-audio.3.0.0.dylib"; path = "../../../../usr/local/lib/libsfml-audio.3.0.0.dylib"; sourceTree = "<group>"; };
+		FC17C5772796210D00F3213B /* libsfml-graphics-d.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-graphics-d.3.0.0.dylib"; path = "../../../../usr/local/lib/libsfml-graphics-d.3.0.0.dylib"; sourceTree = "<group>"; };
+		FC17C5782796210D00F3213B /* libsfml-system-d.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-system-d.3.0.0.dylib"; path = "../../../../usr/local/lib/libsfml-system-d.3.0.0.dylib"; sourceTree = "<group>"; };
+		FC17C596279628D600F3213B /* FLAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAC.framework; path = ../../../../usr/local/lib/FLAC.framework; sourceTree = "<group>"; };
+		FC17C597279628D600F3213B /* freetype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = freetype.framework; path = ../../../../usr/local/lib/freetype.framework; sourceTree = "<group>"; };
+		FC17C59C279628FC00F3213B /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "../../../../Library/Frameworks/sfml-window.framework"; sourceTree = "<group>"; };
+		FC17C59D279628FC00F3213B /* sfml-system.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-system.framework"; path = "../../../../Library/Frameworks/sfml-system.framework"; sourceTree = "<group>"; };
+		FC17C59E279628FC00F3213B /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "../../../../Library/Frameworks/sfml-audio.framework"; sourceTree = "<group>"; };
+		FC17C59F279628FC00F3213B /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "../../../../Library/Frameworks/sfml-graphics.framework"; sourceTree = "<group>"; };
+		FC17C5A0279628FC00F3213B /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-network.framework"; path = "../../../../Library/Frameworks/sfml-network.framework"; sourceTree = "<group>"; };
+		FC17C5A1279628FC00F3213B /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = ../../../../Library/Frameworks/SFML.framework; sourceTree = "<group>"; };
+		FC17C5AE2796296500F3213B /* ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ogg.framework; path = ../../../../usr/local/lib/ogg.framework; sourceTree = "<group>"; };
+		FC17C5AF2796296500F3213B /* vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vorbis.framework; path = ../../../../usr/local/lib/vorbis.framework; sourceTree = "<group>"; };
+		FC17C5B02796296500F3213B /* vorbisfile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vorbisfile.framework; path = ../../../../usr/local/lib/vorbisfile.framework; sourceTree = "<group>"; };
+		FC17C5B12796296500F3213B /* vorbisenc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vorbisenc.framework; path = ../../../../usr/local/lib/vorbisenc.framework; sourceTree = "<group>"; };
+		FC17C5B22796296500F3213B /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = ../../../../usr/local/lib/OpenAL.framework; sourceTree = "<group>"; };
 		FC424CE0278B6E33009DC34F /* kingengine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kingengine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC424CE4278B6E33009DC34F /* kingengine-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kingengine-Info.plist"; sourceTree = "<group>"; };
 		FC424CE5278B6E33009DC34F /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		FC424CE7278B6E33009DC34F /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
 		FC424CE8278B6E33009DC34F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		FC424D36278B75F4009DC34F /* libsfml-system.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-system.2.5.1.dylib"; path = "../../../../../Library/Frameworks/lib/libsfml-system.2.5.1.dylib"; sourceTree = "<group>"; };
-		FC424D37278B75F4009DC34F /* libsfml-window.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-window.2.5.1.dylib"; path = "../../../../../Library/Frameworks/lib/libsfml-window.2.5.1.dylib"; sourceTree = "<group>"; };
-		FC424D38278B75F4009DC34F /* libsfml-audio.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-audio.2.5.1.dylib"; path = "../../../../../Library/Frameworks/lib/libsfml-audio.2.5.1.dylib"; sourceTree = "<group>"; };
-		FC424D39278B75F4009DC34F /* libsfml-network.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-network.2.5.1.dylib"; path = "../../../../../Library/Frameworks/lib/libsfml-network.2.5.1.dylib"; sourceTree = "<group>"; };
-		FC424D3A278B75F4009DC34F /* libsfml-graphics.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-graphics.2.5.1.dylib"; path = "../../../../../Library/Frameworks/lib/libsfml-graphics.2.5.1.dylib"; sourceTree = "<group>"; };
 		FC424D46278B768C009DC34F /* cute_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cute_image.jpg; path = /Users/dylan/Code/kingengine/kingengine/Resources/cute_image.jpg; sourceTree = "<absolute>"; };
 		FC424D47278B768C009DC34F /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = nice_music.ogg; path = /Users/dylan/Code/kingengine/kingengine/Resources/nice_music.ogg; sourceTree = "<absolute>"; };
 		FC424D48278B768C009DC34F /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sansation.ttf; path = /Users/dylan/Code/kingengine/kingengine/Resources/sansation.ttf; sourceTree = "<absolute>"; };
@@ -238,11 +277,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC424D3F278B75F4009DC34F /* libsfml-audio.2.5.1.dylib in Frameworks */,
-				FC424D3D278B75F4009DC34F /* libsfml-window.2.5.1.dylib in Frameworks */,
-				FC424D3B278B75F4009DC34F /* libsfml-system.2.5.1.dylib in Frameworks */,
-				FC424D43278B75F4009DC34F /* libsfml-graphics.2.5.1.dylib in Frameworks */,
-				FC424D41278B75F4009DC34F /* libsfml-network.2.5.1.dylib in Frameworks */,
+				FC17C598279628D600F3213B /* FLAC.framework in Frameworks */,
+				FC17C5BC2796299300F3213B /* vorbisfile.framework in Frameworks */,
+				FC17C5BA2796299200F3213B /* vorbisenc.framework in Frameworks */,
+				FC17C5A6279628FC00F3213B /* sfml-audio.framework in Frameworks */,
+				FC17C59A279628D600F3213B /* freetype.framework in Frameworks */,
+				FC17C5A4279628FC00F3213B /* sfml-system.framework in Frameworks */,
+				FC17C5A2279628FC00F3213B /* sfml-window.framework in Frameworks */,
+				FC17C5BE2796299600F3213B /* OpenAL.framework in Frameworks */,
+				FC17C5B82796299000F3213B /* vorbis.framework in Frameworks */,
+				FC17C5AC279628FC00F3213B /* SFML.framework in Frameworks */,
+				FC17C5C02796299700F3213B /* ogg.framework in Frameworks */,
+				FC17C5AA279628FC00F3213B /* sfml-network.framework in Frameworks */,
+				FC17C5A8279628FC00F3213B /* sfml-graphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,11 +380,29 @@
 		FC424D35278B75F3009DC34F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FC424D38278B75F4009DC34F /* libsfml-audio.2.5.1.dylib */,
-				FC424D3A278B75F4009DC34F /* libsfml-graphics.2.5.1.dylib */,
-				FC424D39278B75F4009DC34F /* libsfml-network.2.5.1.dylib */,
-				FC424D36278B75F4009DC34F /* libsfml-system.2.5.1.dylib */,
-				FC424D37278B75F4009DC34F /* libsfml-window.2.5.1.dylib */,
+				FC17C59E279628FC00F3213B /* sfml-audio.framework */,
+				FC17C59F279628FC00F3213B /* sfml-graphics.framework */,
+				FC17C5A0279628FC00F3213B /* sfml-network.framework */,
+				FC17C59D279628FC00F3213B /* sfml-system.framework */,
+				FC17C59C279628FC00F3213B /* sfml-window.framework */,
+				FC17C5A1279628FC00F3213B /* SFML.framework */,
+				FC17C5AE2796296500F3213B /* ogg.framework */,
+				FC17C5B22796296500F3213B /* OpenAL.framework */,
+				FC17C5AF2796296500F3213B /* vorbis.framework */,
+				FC17C5B12796296500F3213B /* vorbisenc.framework */,
+				FC17C5B02796296500F3213B /* vorbisfile.framework */,
+				FC17C596279628D600F3213B /* FLAC.framework */,
+				FC17C597279628D600F3213B /* freetype.framework */,
+				FC17C5702796210D00F3213B /* libsfml-audio-d.3.0.0.dylib */,
+				FC17C5762796210D00F3213B /* libsfml-audio.3.0.0.dylib */,
+				FC17C5772796210D00F3213B /* libsfml-graphics-d.3.0.0.dylib */,
+				FC17C5732796210D00F3213B /* libsfml-graphics.3.0.0.dylib */,
+				FC17C56F2796210D00F3213B /* libsfml-network-d.3.0.0.dylib */,
+				FC17C5752796210D00F3213B /* libsfml-network.3.0.0.dylib */,
+				FC17C5782796210D00F3213B /* libsfml-system-d.3.0.0.dylib */,
+				FC17C5742796210D00F3213B /* libsfml-system.3.0.0.dylib */,
+				FC17C5712796210D00F3213B /* libsfml-window-d.3.0.0.dylib */,
+				FC17C5722796210D00F3213B /* libsfml-window.3.0.0.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -657,7 +722,7 @@
 				FC424CDC278B6E33009DC34F /* Frameworks */,
 				FC424CDD278B6E33009DC34F /* Resources */,
 				FC424CDE278B6E33009DC34F /* ShellScript */,
-				FC424D45278B75F4009DC34F /* Embed Libraries */,
+				FC17C5952796280300F3213B /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -755,18 +820,15 @@
 				FC799253278E0D740045640E /* FolderManager.mm in Sources */,
 				FC1748C0278FAC8C00C63F40 /* LightSource.cpp in Sources */,
 				FC424CE6278B6E33009DC34F /* ResourcePath.mm in Sources */,
-				FC424F37278B7FB0009DC34F /* Tile.cpp in Sources */,
 				FC424CE9278B6E33009DC34F /* main.cpp in Sources */,
 				FC424F47278BA9B5009DC34F /* GameEngine.cpp in Sources */,
 				FC799251278E0A0F0045640E /* FileManager.cpp in Sources */,
 				FC424F4C278BCA36009DC34F /* Development.cpp in Sources */,
-				FC424F30278B7ECD009DC34F /* Player.cpp in Sources */,
 				FC424F56278CBB22009DC34F /* BaseRenderable.cpp in Sources */,
 				FC424F17278B7970009DC34F /* imgui_draw.cpp in Sources */,
 				FC424E87278B7970009DC34F /* imgui_widgets.cpp in Sources */,
 				FC424F15278B7970009DC34F /* imgui_tables.cpp in Sources */,
 				FC1748BB278F9E9300C63F40 /* AssetManager.cpp in Sources */,
-				FC424F33278B7F8F009DC34F /* World.cpp in Sources */,
 				FC424F60278CC7E8009DC34F /* Tiles.cpp in Sources */,
 				FCBD3A0C2791E2ED0080DE69 /* TileMap.cpp in Sources */,
 				FC424F5C278CC424009DC34F /* WorldManager.cpp in Sources */,
@@ -784,7 +846,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = (
 					/Library/Frameworks/,
@@ -833,7 +896,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = (
 					/Library/Frameworks/,
@@ -883,13 +947,22 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_MASTER_OBJECT_FILE = NO;
 				INFOPLIST_FILE = "kingengine/Supporting Files/kingengine-Info.plist";
 				KEEP_PRIVATE_EXTERNS = NO;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/lib",
@@ -898,6 +971,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dl.kingengine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SFML_BINARY_TYPE = FRAMEWORKS;
 			};
 			name = Debug;
 		};
@@ -907,13 +981,22 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_MASTER_OBJECT_FILE = NO;
 				INFOPLIST_FILE = "kingengine/Supporting Files/kingengine-Info.plist";
 				KEEP_PRIVATE_EXTERNS = NO;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/lib",
@@ -922,6 +1005,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dl.kingengine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SFML_BINARY_TYPE = FRAMEWORKS;
 			};
 			name = Release;
 		};

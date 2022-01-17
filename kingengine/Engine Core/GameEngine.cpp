@@ -168,10 +168,10 @@ const std::vector< Renderable*>* GameEngine::getListAtLayer(int index){
 bool GameEngine::isPointInCurrentView(sf::Vector2f point){
     sf::Vector2f viewCenter(window->getView().getCenter());
     sf::Vector2f viewSize(window->getView().getSize());
-    sf::FloatRect currentView (viewCenter.x - viewSize.x / 2, // left
-                                viewCenter.y - viewSize.y / 2, // top
-                                viewSize.x,
-                                viewSize.y);
+    sf::Rect<float> currentView (sf::Vector2f(viewCenter.x - viewSize.x / 2, // left
+                                viewCenter.y - viewSize.y / 2), // top
+                               sf::Vector2f( viewSize.x,
+                                viewSize.y) );
     return (currentView.contains(point));
     
 }

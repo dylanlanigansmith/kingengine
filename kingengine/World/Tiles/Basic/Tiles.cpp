@@ -18,7 +18,7 @@ Tile::Tile(sf::IntRect tRect , sf::Vector2f tPos, sf::Texture* text){
     sprite.setPosition(position);
     float originX = tRect.width / 2;
     float originY = tRect.height / 2;
-    sprite.setOrigin(originX,originY);
+    sprite.setOrigin(sf::Vector2f(originX,originY));
     render_type = RenderOptions::WorldObject;
 }
 Tile::~Tile(){
@@ -66,9 +66,9 @@ bool TileManager::initTiles(){
         for (int x = 0; x < numX; x++){
             float worldX = x * rectX;
             float worldY = y * rectY;
-            sf::IntRect texture_rect(worldX, worldY, rectX, rectY);
+            //sf::Rect<int> texture_rect = sf::Rect<int>(sf::Vector2<float>(worldX, worldY), sf::Vector2i(rectX, rectY)) ;
             
-            tiles[y][x] = (new Tile(texture_rect, sf::Vector2f(worldX, worldY), &sourceTexture));
+            //tiles[y][x] = (new Tile(texture_rect, sf::Vector2f(worldX, worldY), &sourceTexture));
         }
     }
     return true; //beautiful error handling
@@ -96,7 +96,7 @@ sf::FloatRect Tile::getBounds(){
 void TileManager::setTileColor(sf::Color setColor, int x, int y){
         for ( auto const &row : tiles ){
             for (auto const &tile : row){
-                if(tile->getBounds().contains(x, y)){
+                if(tile->getBounds().contains(sf::Vector2f(x, y) )){
                     if(setColor.r > 0 || setColor.b > 0 || setColor.g >0){
                         tile->setColor(setColor);
                     }

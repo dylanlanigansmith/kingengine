@@ -48,7 +48,7 @@ void DevTools::render(sf::RenderTarget& target){
             float size = CreatorOptions.worldsize_x / CreatorOptions.num_tiles;
             CurrentTile.setSize(sf::Vector2f(size,size));
             sf::Vector2f mouse_posf =engine->window->mapPixelToCoords(mouse_pos);
-            CurrentTile.setPosition(mouse_posf.x,mouse_posf.y);
+            CurrentTile.setPosition(mouse_posf);
             
             target.draw(CurrentTile);
             
