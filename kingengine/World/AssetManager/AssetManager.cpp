@@ -65,7 +65,7 @@ Asset*  AssetManager::createAsset<AssetTextureMap>(const std::string& filename){
     
     //TextureMapAsset should act as a mini mgr with IntRects map loaded from json that accompanies the TextureMap
     //so that a tilemgr can be like hey! need "map7" and "worldname"->"tile data", and a tile can say hey need "tile data"(myPos), then okay now I need IntRect for map7->"grass"..
-    //https://www.sfml-dev.org/tutorials/2.5/graphics-vertex-array.php
+ 
 }
 
 Asset* AssetManager::createAsset(const std::string& filename, AssetTypes type){

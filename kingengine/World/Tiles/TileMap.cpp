@@ -29,7 +29,7 @@ bool TileMap::load( sf::Vector2u tileSize)
         {
             // get the current tile number
             int tileNumber = tmi->tiles[i + j * width];
-            tileNumber = tileNumber + 2;
+            
             // find its position in the tileset texture
             int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
             int tv = tileNumber / (m_tileset.getSize().x / tileSize.x);
@@ -80,6 +80,49 @@ void TileMap::update(){
 
 bool TileMapInformation::loadJSON(){
     using namespace rapidjson;
+   
+    std::ifstream read(path.c_str());
+    IStreamWrapper isw(read);
+    Document document;
+    document.ParseStream(isw);
+    read.close();
+    
+    assert(document.IsObject());
+    auto getStringMember = [&](const char* name, const Document& doc) -> std::string {
+        if(doc.HasMember(name))
+            if(doc[name].IsString())
+                return doc[name].GetString();
+    };
+    auto getIntMember = [&](const char* name, const Document& doc) -> uint32_t {
+        if(doc.HasMember(name))
+            if(doc[name].IsUint())
+                return doc[name].GetUint();
+    };
+    tilemap_name = getStringMember("name", document);
+    map_size_x = getIntMember("map_size_x", document);
+    map_size_y = getIntMember("map_size_y", document);
+    tile_size_x = getIntMember("tile_size_x", document);
+    tile_size_y = getIntMember("tile_size_y", document);
+    if(document.HasMember("mapping")){
+        if(document["mapping"].IsObject()){
+           for(auto& map : document["mapping"].GetObject()){
+               name_to_position.insert(std::pair<std::string, int>(map.name.GetString(), map.value.GetInt() ) );
+           }
+        }
+    }
+    if(document.HasMember("data")){
+        if(document["data"].IsArray()){
+           for(auto& tile_data : document["data"].GetArray()){
+               tiles.push_back(tile_data.GetInt());
+           }
+        }
+    }
+    
+    return true;
+}
+
+bool TileMapInformation::createJSON(){
+    using namespace rapidjson;
     Document doc;
     doc.SetObject();
     doc.AddMember("name","tilemap.png",doc.GetAllocator());
@@ -87,7 +130,6 @@ bool TileMapInformation::loadJSON(){
     doc.AddMember("map_size_y",32,doc.GetAllocator());
     doc.AddMember("tile_size_x",32,doc.GetAllocator());
     doc.AddMember("tile_size_y",32,doc.GetAllocator());
-    doc.AddMember("size_x",64,doc.GetAllocator());
     doc.AddMember("max_tile_index",10,doc.GetAllocator());
     Value a(kArrayType);
                     //x*y
@@ -153,11 +195,42 @@ bool TileMapInformation::loadJSON(){
         }
     }
     
-    std::cout << tilemap_name << std::endl;
-    std::cout << name_to_position.at("water");
-    std::cout << tiles.at(7);
+ 
     return true;
 }
-void TileMapInformation::update(int x, int y, std::string name){
+bool TileMapInformation::saveJSON(){
+    using namespace rapidjson;
+    Document doc;
+    doc.SetObject();
+    doc.AddMember("name","tilemap.png",doc.GetAllocator());
+    doc.AddMember("map_size_x",map_size_x,doc.GetAllocator());
+    doc.AddMember("map_size_y",map_size_y,doc.GetAllocator());
+    doc.AddMember("tile_size_x",tile_size_x,doc.GetAllocator());
+    doc.AddMember("tile_size_y",tile_size_y,doc.GetAllocator());
+    doc.AddMember("max_tile_index",max_tile_index,doc.GetAllocator());
+    Value a(kArrayType);
+                    //x*y
+    for(int i = 0; i < (tile_size_x*tile_size_y); i++){
+        a.PushBack(tiles.at(i), doc.GetAllocator());
+    }
+    doc.AddMember("data", a, doc.GetAllocator());
+    Document map;
     
+    map.SetObject();
+    for(auto& t : name_to_position){
+        Value tt(t.first.c_str(), map.GetAllocator());
+        Value ti(t.second);
+        map.AddMember(tt,ti,map.GetAllocator());
+    }
+    doc.AddMember("mapping", map, doc.GetAllocator());
+    
+    
+    StringBuffer buffer;
+    Writer<StringBuffer> writer(buffer);
+    doc.Accept(writer);
+    std::ofstream file(path.c_str());
+    file << buffer.GetString();
+    file.close();
+    std::cout << "saved to " << path << std::endl;
+    return true;
 }

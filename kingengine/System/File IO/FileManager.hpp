@@ -20,21 +20,21 @@
 #include "document.h"
 #include "writer.h"
 #include "stringbuffer.h"
-
+#include <vector>
+#include <string>
 
 
 class FileManager {
 private:
     std::string app_folder;
     char *supportPath;
-    const char* demoBytes = "MAN I HOPE THIS IS WORKING: 0{Kill : \"yourself\"} Dude where is my car";
 public:
     FileManager();
     ~FileManager();
     bool saveToFile(std::string);
     bool saveWorld(rapidjson::Document*, std::string name);
     rapidjson::Document loadWorld(std::string name);
-    void getFolders(char* list);
+    void getFolders(const std::string& name, std::vector<std::string> &list);
     std::string getAppFolderPath();
     
     std::string makeWorldFolder(std::string name);

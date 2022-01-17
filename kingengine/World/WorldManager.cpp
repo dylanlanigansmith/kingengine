@@ -49,7 +49,7 @@ bool WorldManager::CreateWorld(WorldTypes type, int sizeX, int sizeY, int num_ti
             return false;
     }
     TextureMapAsset* t_map = static_cast<TextureMapAsset*>( assets->createAsset<AssetTextureMap>("tilemap.png"));
-  
+    t_map->setSavePath(world_path);
     //should just give texture name to tilemanager which can call the worlds asset manager.. somehow.. OR just pass the * to the asset and it can flag as unneeded itself, world can run the check!
    // renderables[RENDER_BASELAYER].push_back(new TileManager(size_x, size_y, rect_x, rect_y, &world_texture) ); //TILEMANAGER_INDEX = 0
     renderables[RENDER_BASELAYER].push_back(new TileMap(t_map, sf::Vector2u(32,32)));

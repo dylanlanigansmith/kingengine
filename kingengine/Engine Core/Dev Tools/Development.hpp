@@ -78,12 +78,15 @@ private:
         
     } CreatorOptions;
     
+    //load
+    std::vector<std::string> worldnames;
+    int selectedWorld;
     
-    
-    
+    //paint
     float colorPicker[4];
     bool showColorPicker;
-
+    std::vector<std::string> tilenames;
+    int selectedTile;
     
     float zoom = 1.f;
     

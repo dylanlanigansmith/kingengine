@@ -62,7 +62,7 @@ namespace fm {
         bool createDirectoryFromPath(const char* itemPath);
         //does file exist
         //get folders
-        void contentsOfDirectory(const char *itemPath, std::vector<std::string>* contents);
+        void contentsOfDirectory(const char *itemPath, std::vector<std::string>& contents);
         private:
             void *m_autoreleasePool;
     };

@@ -26,21 +26,33 @@ private:
     std::vector<int> tiles;
     
     bool loadJSON();
+    bool createJSON();
+    bool saveJSON();
     bool saveTo();
  
     friend class TileMap;
     friend class Development;
 public:
+    void save(){
+        saveJSON();
+    }
     TileMapInformation(std::string p){
         path = p;
         loadJSON();
     }
     void getTileNames(std::vector<std::string> &vec){
+        vec.clear();
         for (auto& n : name_to_position){
             vec.push_back(n.first);
         }
     }
-    void update(int x, int y, std::string name);
+    void update(int x, int y, const std::string& name){
+        int idx = (x / tile_size_x) + ( (y / tile_size_y)*32);
+        if(name_to_position.find(name) != name_to_position.end())
+            tiles[idx] = name_to_position[name];
+        else
+            std::cout << "no tile for " << name;
+    }
 };
 
 
@@ -50,7 +62,7 @@ public:
     TileMap(TextureMapAsset* ass, sf::Vector2u tileSize){
         asset = ass;
         
-        tmi = new TileMapInformation(asset->getPath()+"save.json"); 
+        tmi = new TileMapInformation(asset->getSavePath()+"save.json");
         
         load(tileSize);
     }
@@ -71,7 +83,7 @@ public:
     TileMapInformation* getInfo(){
         return tmi;
     }
-    
+
 private:
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;

@@ -96,6 +96,7 @@ class TextureMapAsset : public Asset{
     sf::Texture* texture;
     rapidjson::Document data;
     std::string map_name;
+    std::string save_path;
     std::string map_path;
     sf::Vector2i size;
     bool isLoaded(){
@@ -107,6 +108,12 @@ class TextureMapAsset : public Asset{
 public:
     std::string getPath(){
         return map_path;
+    }
+    std::string getSavePath(){
+        return save_path;
+    }
+    void setSavePath(const std::string& n){ //greasy
+        save_path = n;
     }
     std::string getName(){
         return map_path;

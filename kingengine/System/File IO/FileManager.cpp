@@ -46,7 +46,7 @@ FileManager::~FileManager(){
 
 std::string FileManager::makeWorldFolder(std::string name){
     FolderManager folderManager;
-    std::string path = app_folder + WORLD_FOLDER + "/" + name + "/";
+    std::string path = app_folder + WORLD_FOLDER + "/" + name + "/"; //this might be a problem
     std::cout << path << std::endl;
     if(folderManager.createDirectoryFromPath(path.c_str())){
         return path;
@@ -72,6 +72,7 @@ bool FileManager::saveWorld(rapidjson::Document* data, std::string path){
     }
 }
 
+//this should move to Asset Manager
 rapidjson::Document FileManager::loadWorld(std::string name){
     std::string loadPath = app_folder + WORLD_FOLDER + "/" + name; // + files
     std::fstream file(loadPath.c_str());
@@ -98,6 +99,16 @@ std::string FileManager::getAppFolderPath(){
     if(app_folder.length() > 0)
         return app_folder;
     return std::string("");
+}
+
+
+void FileManager::getFolders(const std::string& name, std::vector<std::string> &list){
+    FolderManager folderManager;
+    //not using name yet
+    std::string path = app_folder + WORLD_FOLDER + "/"; //this might be a problem
+    folderManager.contentsOfDirectory(path.c_str(), list);
+    
+    
 }
 #endif
     

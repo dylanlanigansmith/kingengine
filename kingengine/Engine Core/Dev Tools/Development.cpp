@@ -21,12 +21,15 @@ DevTools::DevTools(int setMode){
     RunEditor = false;
     renderGUI = true;
     worldOption = 0;
+    
+    selectedWorld = 0;
+    selectedTile = 1;
     showColorPicker= false;
   
     CurrentTile.setFillColor(sf::Color(15.f,15.f,15.f));
     CurrentTile.setSize(sf::Vector2f(128.f,128.f));
     fm = new FileManager();
-   
+    fm->getFolders("", worldnames);
     activePath = resourcePath();
   
     
@@ -49,7 +52,8 @@ void DevTools::render(sf::RenderTarget& target){
             
             target.draw(CurrentTile);
             
-            //create tile world,
+            //adding tilemap support to this is another reason to merge tilemapinfo into the asset manager
+            
         }
     }
 }
@@ -68,6 +72,38 @@ void DevTools::runGUI(){
         if(ImGui::Button("Edit Object")){
             GUIMode = ObjectEditor;
         }
+        ImGui::End();
+    }
+    if(GUIMode == WorldLoader){
+        ImGui::SetNextWindowPos(ImVec2( WIN_X / 4,WIN_Y / 4));
+        ImGui::SetNextWindowSize(ImVec2(WIN_X / 2, WIN_Y / 2));
+        ImGui::Begin("World Loader", &renderGUI);
+        std::string error = "waiting";
+        if(ImGui::Button("refresh")){
+            fm->getFolders("", worldnames);
+        }
+        ImGui::Combo("Select Level", &selectedWorld, worldnames);
+        ImGui::Separator();
+        
+        char str[255];
+        if(selectedWorld < worldnames.size())
+            sprintf(str, "Load World: %s", worldnames.at(selectedWorld).c_str());
+        else
+            sprintf(str, "Load World: %s", "select a world");
+        if(ImGui::Button(str)){
+            std::string name = worldnames.at(selectedWorld);
+            std::string worldPath = fm->makeWorldFolder(name);
+            //actually figure out what i wanna save/load
+            if(engine->world->CreateWorld(Tiled, CreatorOptions.worldsize_x, CreatorOptions.worldsize_y, CreatorOptions.num_tiles, name, worldPath)){
+                    GUIMode = WorldEditor;
+                activePath = worldPath;
+                //will crash without tilemap and tile save file moved into world folder 
+                engine->world->getTileMap().getInfo()->getTileNames(tilenames);
+            }
+        }
+        ImGui::Text("Status: %s", error.c_str());
+        if(ImGui::Button("Back"))
+            GUIMode = GUISelectMode;
         ImGui::End();
     }
     if(GUIMode==WorldCreator){
@@ -119,12 +155,14 @@ void DevTools::runGUI(){
                 if(engine->world->CreateWorld(Tiled, CreatorOptions.worldsize_x, CreatorOptions.worldsize_y, CreatorOptions.num_tiles, CreatorOptions.worldName, worldPath)){
                         GUIMode = WorldEditor;
                     activePath = worldPath;
+                    engine->world->getTileMap().getInfo()->getTileNames(tilenames);
                 }
                 
             }
         }
-        ImGui::Text(error.c_str());
-        
+        ImGui::Text("Error: %s", error.c_str());
+        if(ImGui::Button("Back"))
+            GUIMode = GUISelectMode;
         ImGui::End();
     }
     if(GUIMode == WorldEditor){
@@ -140,14 +178,15 @@ void DevTools::runGUI(){
             EditorMode = PaintMode;
         
         
-        if(ImGui::Button("SAVE"))
-            engine->world->SaveWorld(activePath + "layer0.png");
-        
+        if(ImGui::Button("SAVE")){
+            engine->world->getTileMap().getInfo()->save();
+            
+        }
         if(EditorMode == MoveMode){
             ImGui::Text("Move");
             std::string viewPos = std::to_string(engine->player_view.getCenter().x) + " " + std::to_string(engine->player_view.getCenter().y);
-            ImGui::Text(viewPos.c_str());
-            engine->player_view.zoom((static_cast<float>(static_cast<int>(zoom * 10.)) / 10.)); //greasy
+            ImGui::Text("%s", viewPos.c_str());
+            engine->player_view.zoom((static_cast<float>(static_cast<int>(zoom * 10.)) / 10.)); //greasy, doesnt work
             ImGui::SliderFloat("Zoom", &zoom, 0.1f, 2.f);
             sf::Vector2f velocity = sf::Vector2f(0.f,0.f);
             float moveSpeed = 1.f;
@@ -178,9 +217,9 @@ void DevTools::runGUI(){
             ImGui::Combo("Layer", &worldOption, WorldTypes, 3);
             int size = 500;
             ImGui::SliderInt("brush size (0-1000%)", &size, 0, 1000); //do with rect intersects
-            std::vector<std::string> tilenames; engine->world->getTileMap().getInfo()->getTileNames(tilenames);
-            int idx;
-            ImGui::Combo("Select Tile", &idx, tilenames);
+            
+            
+            ImGui::Combo("Select Tile", &selectedTile, tilenames);
             ImGui::Checkbox("Show Color Picker", &showColorPicker);
             if(showColorPicker){
                 ImGuiColorEditFlags flags = 0;
@@ -192,6 +231,10 @@ void DevTools::runGUI(){
                     sf::Vector2i mouse_pos = engine->getMousePosition();
                     //fix
                     sf::Vector2f mouse_posf =engine->window->mapPixelToCoords(mouse_pos);
+                    //gridy/x = win_x / 32 respectively
+                    
+                    engine->world->getTileMap().getInfo()->update(mouse_posf.x, mouse_posf.y, tilenames.at(selectedTile));
+                    engine->world->getTileMap().load(sf::Vector2u(32,32));
                    // engine->world->getTileManager().setTileColor(sf::Color(colorPicker[0] * 255,colorPicker[1] * 255,colorPicker[2] * 255, 255), mouse_posf.x,mouse_posf.y);
                 }
             }
@@ -199,7 +242,7 @@ void DevTools::runGUI(){
         }
         //finish base shit 
         //NEXT: Sprite adding
-        // tile texture map changing
+     
         //SAVING
         //LOADING FROM SAVE
         

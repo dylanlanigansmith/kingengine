@@ -287,6 +287,15 @@
 			path = "File IO";
 			sourceTree = "<group>";
 		};
+		FC17C4CE2795E91F00F3213B /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				FC424F5E278CC7E8009DC34F /* Tiles.cpp */,
+				FC424F5F278CC7E8009DC34F /* Tiles.hpp */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
 		FC424CD6278B6E33009DC34F = {
 			isa = PBXGroup;
 			children = (
@@ -502,8 +511,7 @@
 		FC424F5D278CC7CD009DC34F /* Tiles */ = {
 			isa = PBXGroup;
 			children = (
-				FC424F5E278CC7E8009DC34F /* Tiles.cpp */,
-				FC424F5F278CC7E8009DC34F /* Tiles.hpp */,
+				FC17C4CE2795E91F00F3213B /* Basic */,
 				FCBD3A0A2791E2ED0080DE69 /* TileMap.cpp */,
 				FCBD3A0B2791E2ED0080DE69 /* TileMap.hpp */,
 			);

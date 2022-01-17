@@ -58,7 +58,7 @@ bool FolderManager::createDirectoryFromPath(const char* itemPath){
     return makeDir;
 }
 
-void FolderManager::contentsOfDirectory(const char *itemPath, std::vector<std::string>* contents){
+void FolderManager::contentsOfDirectory(const char *itemPath, std::vector<std::string> &contents){
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     NSString *nsPath = [fileManager stringWithFileSystemRepresentation:itemPath length:strlen(itemPath)];
@@ -67,7 +67,7 @@ void FolderManager::contentsOfDirectory(const char *itemPath, std::vector<std::s
    for(NSString *str in array){
        if(str != nil){
            std::string folderpath([str UTF8String]);
-           contents->push_back(folderpath);
+           contents.push_back(folderpath);
        }
        
     }
