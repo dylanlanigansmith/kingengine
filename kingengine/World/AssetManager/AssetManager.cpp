@@ -15,7 +15,11 @@ AssetManager::AssetManager(std::string wp){
     resource_path = resourcePath();
     key = 0;
     if(!init()){
-        std::cout << "AssetManager Init Failed" << std::endl;
+        logger.fatal_error("AssetManager Init Failed: " + wp);
+    }
+    else{
+        logger.silent("Loaded AssetManager for " + wp);
+        logger << "AssetManager: OK" << lm::endl;
     }
     
 }
@@ -30,7 +34,9 @@ bool AssetManager::init(){
     //find/make app folder
     //try n get away with not keeping an FM around
     FileManager fm;
-    fm.makeWorldFolder(world_path);
+    std::string wf = fm.makeWorldFolder(world_path);
+    if(wf.length() < 5) //SOOO ARBITRARY
+        return false;
     texture_path = world_path + "textures/"; //fix this shit
     
     return true;
@@ -78,7 +84,7 @@ Asset* AssetManager::createAsset(const std::string& filename, AssetTypes type){
             break;
         case AssetBasic:
         default:
-            std::cout << "lazy developer hasnt fixed this yet" << std::endl;
+            logger << "asset mgr: lazy developer hasnt fixed this yet" << lm::endl;
     }
 }
 Asset* AssetManager::requestAsset(const std::string& name){

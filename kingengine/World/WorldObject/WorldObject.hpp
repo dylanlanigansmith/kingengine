@@ -14,7 +14,7 @@
 
 #include "BaseRenderable.hpp"
 
-class WorldObject : public Renderable{
+class WorldObject : public Renderable, public sf::Transformable{
 protected:
     sf::Vector2f position;
     sf::Vector2i position_s;

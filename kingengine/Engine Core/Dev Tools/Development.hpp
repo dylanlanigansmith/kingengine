@@ -87,7 +87,7 @@ private:
     bool showColorPicker;
     std::vector<std::string> tilenames;
     int selectedTile;
-    
+    int brushsize = 1;
     float zoom = 1.f;
     
     

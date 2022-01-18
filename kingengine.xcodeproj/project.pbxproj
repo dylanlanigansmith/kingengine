@@ -13,32 +13,6 @@
 		FC1748BC278F9E9300C63F40 /* AssetManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FC1748BA278F9E9300C63F40 /* AssetManager.hpp */; };
 		FC1748C0278FAC8C00C63F40 /* LightSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1748BE278FAC8C00C63F40 /* LightSource.cpp */; };
 		FC1748C1278FAC8C00C63F40 /* LightSource.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FC1748BF278FAC8C00C63F40 /* LightSource.hpp */; };
-		FC17C598279628D600F3213B /* FLAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C596279628D600F3213B /* FLAC.framework */; };
-		FC17C599279628D600F3213B /* FLAC.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C596279628D600F3213B /* FLAC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C59A279628D600F3213B /* freetype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C597279628D600F3213B /* freetype.framework */; };
-		FC17C59B279628D600F3213B /* freetype.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C597279628D600F3213B /* freetype.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5A2279628FC00F3213B /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59C279628FC00F3213B /* sfml-window.framework */; };
-		FC17C5A3279628FC00F3213B /* sfml-window.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C59C279628FC00F3213B /* sfml-window.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5A4279628FC00F3213B /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59D279628FC00F3213B /* sfml-system.framework */; };
-		FC17C5A5279628FC00F3213B /* sfml-system.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C59D279628FC00F3213B /* sfml-system.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5A6279628FC00F3213B /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59E279628FC00F3213B /* sfml-audio.framework */; };
-		FC17C5A7279628FC00F3213B /* sfml-audio.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C59E279628FC00F3213B /* sfml-audio.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5A8279628FC00F3213B /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59F279628FC00F3213B /* sfml-graphics.framework */; };
-		FC17C5A9279628FC00F3213B /* sfml-graphics.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C59F279628FC00F3213B /* sfml-graphics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5AA279628FC00F3213B /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5A0279628FC00F3213B /* sfml-network.framework */; };
-		FC17C5AB279628FC00F3213B /* sfml-network.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5A0279628FC00F3213B /* sfml-network.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5AC279628FC00F3213B /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5A1279628FC00F3213B /* SFML.framework */; };
-		FC17C5AD279628FC00F3213B /* SFML.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5A1279628FC00F3213B /* SFML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5B82796299000F3213B /* vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5AF2796296500F3213B /* vorbis.framework */; };
-		FC17C5B92796299000F3213B /* vorbis.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5AF2796296500F3213B /* vorbis.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5BA2796299200F3213B /* vorbisenc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B12796296500F3213B /* vorbisenc.framework */; };
-		FC17C5BB2796299200F3213B /* vorbisenc.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5B12796296500F3213B /* vorbisenc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5BC2796299300F3213B /* vorbisfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B02796296500F3213B /* vorbisfile.framework */; };
-		FC17C5BD2796299300F3213B /* vorbisfile.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5B02796296500F3213B /* vorbisfile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5BE2796299600F3213B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B22796296500F3213B /* OpenAL.framework */; };
-		FC17C5BF2796299600F3213B /* OpenAL.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5B22796296500F3213B /* OpenAL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC17C5C02796299700F3213B /* ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5AE2796296500F3213B /* ogg.framework */; };
-		FC17C5C12796299700F3213B /* ogg.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FC17C5AE2796296500F3213B /* ogg.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC424CE6278B6E33009DC34F /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC424CE5278B6E33009DC34F /* ResourcePath.mm */; };
 		FC424CE9278B6E33009DC34F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC424CE8278B6E33009DC34F /* main.cpp */; };
 		FC424D4B278B768C009DC34F /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC424D46278B768C009DC34F /* cute_image.jpg */; };
@@ -107,30 +81,60 @@
 		FC7992A9278E444E0045640E /* pointer.h in Headers */ = {isa = PBXBuildFile; fileRef = FC799282278E444E0045640E /* pointer.h */; };
 		FCBD3A0C2791E2ED0080DE69 /* TileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCBD3A0A2791E2ED0080DE69 /* TileMap.cpp */; };
 		FCBD3A0D2791E2ED0080DE69 /* TileMap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FCBD3A0B2791E2ED0080DE69 /* TileMap.hpp */; };
+		FCCCE0F72797369100E443B6 /* LogManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCCCE0F52797369100E443B6 /* LogManager.cpp */; };
+		FCCCE0F82797369100E443B6 /* LogManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FCCCE0F62797369100E443B6 /* LogManager.hpp */; };
+		FCCCE0F92797566500E443B6 /* FLAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C596279628D600F3213B /* FLAC.framework */; };
+		FCCCE0FA2797566500E443B6 /* FLAC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C596279628D600F3213B /* FLAC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE0FB2797566500E443B6 /* freetype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C597279628D600F3213B /* freetype.framework */; };
+		FCCCE0FC2797566500E443B6 /* freetype.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C597279628D600F3213B /* freetype.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE0FD2797566500E443B6 /* ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5AE2796296500F3213B /* ogg.framework */; };
+		FCCCE0FE2797566500E443B6 /* ogg.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5AE2796296500F3213B /* ogg.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE0FF2797566500E443B6 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B22796296500F3213B /* OpenAL.framework */; };
+		FCCCE1002797566500E443B6 /* OpenAL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B22796296500F3213B /* OpenAL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE1012797566500E443B6 /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59E279628FC00F3213B /* sfml-audio.framework */; };
+		FCCCE1022797566500E443B6 /* sfml-audio.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59E279628FC00F3213B /* sfml-audio.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE1032797566500E443B6 /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59F279628FC00F3213B /* sfml-graphics.framework */; };
+		FCCCE1042797566500E443B6 /* sfml-graphics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59F279628FC00F3213B /* sfml-graphics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE1052797566500E443B6 /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5A0279628FC00F3213B /* sfml-network.framework */; };
+		FCCCE1062797566500E443B6 /* sfml-network.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5A0279628FC00F3213B /* sfml-network.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE1072797566500E443B6 /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59D279628FC00F3213B /* sfml-system.framework */; };
+		FCCCE1082797566500E443B6 /* sfml-system.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59D279628FC00F3213B /* sfml-system.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE1092797566500E443B6 /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59C279628FC00F3213B /* sfml-window.framework */; };
+		FCCCE10A2797566500E443B6 /* sfml-window.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C59C279628FC00F3213B /* sfml-window.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE10B2797566500E443B6 /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5A1279628FC00F3213B /* SFML.framework */; };
+		FCCCE10C2797566500E443B6 /* SFML.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5A1279628FC00F3213B /* SFML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE10D2797566500E443B6 /* vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5AF2796296500F3213B /* vorbis.framework */; };
+		FCCCE10E2797566500E443B6 /* vorbis.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5AF2796296500F3213B /* vorbis.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE10F2797566500E443B6 /* vorbisenc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B12796296500F3213B /* vorbisenc.framework */; };
+		FCCCE1102797566500E443B6 /* vorbisenc.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B12796296500F3213B /* vorbisenc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCCCE1112797566500E443B6 /* vorbisfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B02796296500F3213B /* vorbisfile.framework */; };
+		FCCCE1122797566500E443B6 /* vorbisfile.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC17C5B02796296500F3213B /* vorbisfile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCE80B732796539E00006E3B /* LightingManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCE80B712796539E00006E3B /* LightingManager.cpp */; };
+		FCE80B742796539E00006E3B /* LightingManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FCE80B722796539E00006E3B /* LightingManager.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FC17C5952796280300F3213B /* Embed Libraries */ = {
+		FCCCE1132797566500E443B6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FC17C5BB2796299200F3213B /* vorbisenc.framework in Embed Libraries */,
-				FC17C599279628D600F3213B /* FLAC.framework in Embed Libraries */,
-				FC17C5A7279628FC00F3213B /* sfml-audio.framework in Embed Libraries */,
-				FC17C5BF2796299600F3213B /* OpenAL.framework in Embed Libraries */,
-				FC17C59B279628D600F3213B /* freetype.framework in Embed Libraries */,
-				FC17C5A5279628FC00F3213B /* sfml-system.framework in Embed Libraries */,
-				FC17C5A3279628FC00F3213B /* sfml-window.framework in Embed Libraries */,
-				FC17C5AD279628FC00F3213B /* SFML.framework in Embed Libraries */,
-				FC17C5BD2796299300F3213B /* vorbisfile.framework in Embed Libraries */,
-				FC17C5AB279628FC00F3213B /* sfml-network.framework in Embed Libraries */,
-				FC17C5C12796299700F3213B /* ogg.framework in Embed Libraries */,
-				FC17C5B92796299000F3213B /* vorbis.framework in Embed Libraries */,
-				FC17C5A9279628FC00F3213B /* sfml-graphics.framework in Embed Libraries */,
+				FCCCE0FC2797566500E443B6 /* freetype.framework in Embed Frameworks */,
+				FCCCE1122797566500E443B6 /* vorbisfile.framework in Embed Frameworks */,
+				FCCCE10E2797566500E443B6 /* vorbis.framework in Embed Frameworks */,
+				FCCCE1102797566500E443B6 /* vorbisenc.framework in Embed Frameworks */,
+				FCCCE1022797566500E443B6 /* sfml-audio.framework in Embed Frameworks */,
+				FCCCE0FA2797566500E443B6 /* FLAC.framework in Embed Frameworks */,
+				FCCCE0FE2797566500E443B6 /* ogg.framework in Embed Frameworks */,
+				FCCCE1002797566500E443B6 /* OpenAL.framework in Embed Frameworks */,
+				FCCCE10A2797566500E443B6 /* sfml-window.framework in Embed Frameworks */,
+				FCCCE1082797566500E443B6 /* sfml-system.framework in Embed Frameworks */,
+				FCCCE1042797566500E443B6 /* sfml-graphics.framework in Embed Frameworks */,
+				FCCCE10C2797566500E443B6 /* SFML.framework in Embed Frameworks */,
+				FCCCE1062797566500E443B6 /* sfml-network.framework in Embed Frameworks */,
 			);
-			name = "Embed Libraries";
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -270,6 +274,10 @@
 		FC799285278E444E0045640E /* stdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdint.h; sourceTree = "<group>"; };
 		FCBD3A0A2791E2ED0080DE69 /* TileMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TileMap.cpp; sourceTree = "<group>"; };
 		FCBD3A0B2791E2ED0080DE69 /* TileMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TileMap.hpp; sourceTree = "<group>"; };
+		FCCCE0F52797369100E443B6 /* LogManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LogManager.cpp; sourceTree = "<group>"; };
+		FCCCE0F62797369100E443B6 /* LogManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LogManager.hpp; sourceTree = "<group>"; };
+		FCE80B712796539E00006E3B /* LightingManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LightingManager.cpp; sourceTree = "<group>"; };
+		FCE80B722796539E00006E3B /* LightingManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LightingManager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,19 +285,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC17C598279628D600F3213B /* FLAC.framework in Frameworks */,
-				FC17C5BC2796299300F3213B /* vorbisfile.framework in Frameworks */,
-				FC17C5BA2796299200F3213B /* vorbisenc.framework in Frameworks */,
-				FC17C5A6279628FC00F3213B /* sfml-audio.framework in Frameworks */,
-				FC17C59A279628D600F3213B /* freetype.framework in Frameworks */,
-				FC17C5A4279628FC00F3213B /* sfml-system.framework in Frameworks */,
-				FC17C5A2279628FC00F3213B /* sfml-window.framework in Frameworks */,
-				FC17C5BE2796299600F3213B /* OpenAL.framework in Frameworks */,
-				FC17C5B82796299000F3213B /* vorbis.framework in Frameworks */,
-				FC17C5AC279628FC00F3213B /* SFML.framework in Frameworks */,
-				FC17C5C02796299700F3213B /* ogg.framework in Frameworks */,
-				FC17C5AA279628FC00F3213B /* sfml-network.framework in Frameworks */,
-				FC17C5A8279628FC00F3213B /* sfml-graphics.framework in Frameworks */,
+				FCCCE1072797566500E443B6 /* sfml-system.framework in Frameworks */,
+				FCCCE1112797566500E443B6 /* vorbisfile.framework in Frameworks */,
+				FCCCE10F2797566500E443B6 /* vorbisenc.framework in Frameworks */,
+				FCCCE0F92797566500E443B6 /* FLAC.framework in Frameworks */,
+				FCCCE1012797566500E443B6 /* sfml-audio.framework in Frameworks */,
+				FCCCE0FB2797566500E443B6 /* freetype.framework in Frameworks */,
+				FCCCE1052797566500E443B6 /* sfml-network.framework in Frameworks */,
+				FCCCE10D2797566500E443B6 /* vorbis.framework in Frameworks */,
+				FCCCE0FF2797566500E443B6 /* OpenAL.framework in Frameworks */,
+				FCCCE1092797566500E443B6 /* sfml-window.framework in Frameworks */,
+				FCCCE0FD2797566500E443B6 /* ogg.framework in Frameworks */,
+				FCCCE10B2797566500E443B6 /* SFML.framework in Frameworks */,
+				FCCCE1032797566500E443B6 /* sfml-graphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +309,8 @@
 			children = (
 				FC1748BE278FAC8C00C63F40 /* LightSource.cpp */,
 				FC1748BF278FAC8C00C63F40 /* LightSource.hpp */,
+				FCE80B712796539E00006E3B /* LightingManager.cpp */,
+				FCE80B722796539E00006E3B /* LightingManager.hpp */,
 			);
 			path = Lighting;
 			sourceTree = "<group>";
@@ -587,6 +597,8 @@
 			isa = PBXGroup;
 			children = (
 				FC1748BD278FA60C00C63F40 /* File IO */,
+				FCCCE0F52797369100E443B6 /* LogManager.cpp */,
+				FCCCE0F62797369100E443B6 /* LogManager.hpp */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -686,8 +698,10 @@
 				FC799287278E444E0045640E /* memorystream.h in Headers */,
 				FC1748C1278FAC8C00C63F40 /* LightSource.hpp in Headers */,
 				FC79929D278E444E0045640E /* pow10.h in Headers */,
+				FCCCE0F82797369100E443B6 /* LogManager.hpp in Headers */,
 				FC7992A8278E444E0045640E /* memorybuffer.h in Headers */,
 				FC7992A7278E444E0045640E /* en.h in Headers */,
+				FCE80B742796539E00006E3B /* LightingManager.hpp in Headers */,
 				FC1748B7278F9E6100C63F40 /* WorldObject.hpp in Headers */,
 				FC79928F278E444E0045640E /* uri.h in Headers */,
 				FC799297278E444E0045640E /* strfunc.h in Headers */,
@@ -722,7 +736,7 @@
 				FC424CDC278B6E33009DC34F /* Frameworks */,
 				FC424CDD278B6E33009DC34F /* Resources */,
 				FC424CDE278B6E33009DC34F /* ShellScript */,
-				FC17C5952796280300F3213B /* Embed Libraries */,
+				FCCCE1132797566500E443B6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -817,6 +831,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCCCE0F72797369100E443B6 /* LogManager.cpp in Sources */,
 				FC799253278E0D740045640E /* FolderManager.mm in Sources */,
 				FC1748C0278FAC8C00C63F40 /* LightSource.cpp in Sources */,
 				FC424CE6278B6E33009DC34F /* ResourcePath.mm in Sources */,
@@ -825,6 +840,7 @@
 				FC799251278E0A0F0045640E /* FileManager.cpp in Sources */,
 				FC424F4C278BCA36009DC34F /* Development.cpp in Sources */,
 				FC424F56278CBB22009DC34F /* BaseRenderable.cpp in Sources */,
+				FCE80B732796539E00006E3B /* LightingManager.cpp in Sources */,
 				FC424F17278B7970009DC34F /* imgui_draw.cpp in Sources */,
 				FC424E87278B7970009DC34F /* imgui_widgets.cpp in Sources */,
 				FC424F15278B7970009DC34F /* imgui_tables.cpp in Sources */,

@@ -8,24 +8,8 @@
 
 #include "LightSource.hpp"
 
-LightingManager::LightingManager(){
-    
-}
-LightingManager::~LightingManager(){
-    for (auto &light : lights){
-        delete light;
-    }
-    lights.clear();
-}
 
-void  LightingManager::addLightSource(LightSource toAdd){
-    lights.push_back(new LightSource(toAdd));
-   // lights.back()->
-}
 
-void LightingManager::createFixedMap(sf::RenderTexture & rt){
-    
-}
 
 LightSource::LightSource(){
     

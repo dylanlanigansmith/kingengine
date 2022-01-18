@@ -13,7 +13,7 @@
 #include "writer.h"
 #include "stringbuffer.h"
 #include "custom_imgui.h"
-extern GameEngine* engine;
+
 
 DevTools::DevTools(int setMode){
     GUIMode = GUISelectMode;
@@ -184,39 +184,51 @@ void DevTools::runGUI(){
         }
         if(EditorMode == MoveMode){
             ImGui::Text("Move");
+            ImGui::Separator();
             std::string viewPos = std::to_string(engine->player_view.getCenter().x) + " " + std::to_string(engine->player_view.getCenter().y);
             ImGui::Text("%s", viewPos.c_str());
-            engine->player_view.zoom((static_cast<float>(static_cast<int>(zoom * 10.)) / 10.)); //greasy, doesnt work
-            ImGui::SliderFloat("Zoom", &zoom, 0.1f, 2.f);
+            
+            if(ImGui::Button("Zoom +")){
+                engine->player_view.zoom(0.8f);
+            }ImGui::SameLine();
+            if(ImGui::Button("Zoom -")){
+                engine->player_view.zoom(1.2f);
+            }ImGui::SameLine();
+            if(ImGui::Button("Reset Zoom")){
+                engine->player_view = engine->window->getDefaultView();
+            }
+        
             sf::Vector2f velocity = sf::Vector2f(0.f,0.f);
-            float moveSpeed = 1.f;
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) )
+            float moveSpeed = 5.f;
+    
+            if (ImGui::Button("<-")  )
             {
-                velocity.x += moveSpeed;
+                velocity.x += moveSpeed  * (-1) ;
+            }ImGui::SameLine();
+            if (ImGui::Button("-->") )
+            {
+                velocity.x += moveSpeed ;
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) )
+            if (ImGui::Button("/\\"  ))
             {
-                velocity.x += moveSpeed  * (-1);
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) )
+                velocity.y += moveSpeed * (-1) ;
+            }ImGui::SameLine();
+            if (ImGui::Button("\\/")  )
             {
-                velocity.y += moveSpeed * (-1);
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) )
-            {
-                velocity.y += moveSpeed;
+                velocity.y += moveSpeed ;
             }
             engine->moveView(velocity);
         }
         if(EditorMode == EditorSelectMode ){
             ImGui::Text("Select");
+            
         }
         if(EditorMode == PaintMode ){
             ImGui::Text("Paint");
             ImGui::Separator();
-            ImGui::Combo("Layer", &worldOption, WorldTypes, 3);
-            int size = 500;
-            ImGui::SliderInt("brush size (0-1000%)", &size, 0, 1000); //do with rect intersects
+            ImGui::Combo("Layer", &worldOption, WorldLayers, 3);
+            
+            ImGui::SliderInt("brush size (1-10)", &brushsize, 0, 10); //do with rect intersects
             
             
             ImGui::Combo("Select Tile", &selectedTile, tilenames);
@@ -234,6 +246,33 @@ void DevTools::runGUI(){
                     //gridy/x = win_x / 32 respectively
                     
                     engine->world->getTileMap().getInfo()->update(mouse_posf.x, mouse_posf.y, tilenames.at(selectedTile));
+                    if(brushsize > 1){ //NOT ELEGANT
+                        if(brushsize == 2){
+                            engine->world->getTileMap().getInfo()->update(mouse_posf.x + (30), mouse_posf.y, tilenames.at(selectedTile));
+                        }
+                        else if(brushsize == 3){
+                            engine->world->getTileMap().getInfo()->update(mouse_posf.x + (30), mouse_posf.y, tilenames.at(selectedTile));
+                            engine->world->getTileMap().getInfo()->update(mouse_posf.x - (30), mouse_posf.y, tilenames.at(selectedTile));
+                        }
+                        else if(brushsize > 3){ //redundant
+                            for(int i = 1; i <= (brushsize -3); i++){
+                               //same row
+                                engine->world->getTileMap().getInfo()->update(mouse_posf.x + (i*30), mouse_posf.y, tilenames.at(selectedTile));
+                                engine->world->getTileMap().getInfo()->update(mouse_posf.x - (i*30), mouse_posf.y, tilenames.at(selectedTile));
+                                //top row
+                                engine->world->getTileMap().getInfo()->update(mouse_posf.x + (i*30), mouse_posf.y + (i*30), tilenames.at(selectedTile));
+                                engine->world->getTileMap().getInfo()->update(mouse_posf.x - (i*30), mouse_posf.y + (i*30), tilenames.at(selectedTile));
+                                engine->world->getTileMap().getInfo()->update(mouse_posf.x, mouse_posf.y + (i*30), tilenames.at(selectedTile));
+                                //bottom row
+                                engine->world->getTileMap().getInfo()->update(mouse_posf.x + (i*30), mouse_posf.y - (i*30), tilenames.at(selectedTile));
+                                engine->world->getTileMap().getInfo()->update(mouse_posf.x - (i*30), mouse_posf.y - (i*30), tilenames.at(selectedTile));
+                                engine->world->getTileMap().getInfo()->update(mouse_posf.x, mouse_posf.y - (i*30), tilenames.at(selectedTile));
+                                
+                                
+                            }
+                        }
+                        
+                    }
                     engine->world->getTileMap().load(sf::Vector2u(32,32));
                    // engine->world->getTileManager().setTileColor(sf::Color(colorPicker[0] * 255,colorPicker[1] * 255,colorPicker[2] * 255, 255), mouse_posf.x,mouse_posf.y);
                 }

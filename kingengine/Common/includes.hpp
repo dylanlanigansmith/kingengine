@@ -9,9 +9,11 @@
 #ifndef includes_h
 #define includes_h
 #include "ResourcePath.hpp"
+#include "LogManager.hpp"
+
 #include <iostream>
-#include <fstream>
 #include <vector>
+#include <stack>
 #include <cmath>
 #include <string>
 

@@ -7,7 +7,7 @@
 //
 
 #include "WorldManager.hpp"
-
+#include "LightingManager.hpp"
 
 WorldManager::WorldManager(){
     world_texture = sf::Texture();
@@ -29,6 +29,7 @@ WorldManager::~WorldManager(){
 
 //TILED WORLD
 bool WorldManager::CreateWorld(WorldTypes type, int sizeX, int sizeY, int num_tiles, std::string name, std::string world_path){
+    logger.silent("WorldManager: Creating World " + name);
     assets = new AssetManager(world_path);
     
     renderables.clear();
@@ -40,14 +41,6 @@ bool WorldManager::CreateWorld(WorldTypes type, int sizeX, int sizeY, int num_ti
     size_y = sizeY;
     world_texturename = world_path + "layer0.png";
    
-    sf::Texture* wt = (sf::Texture*) assets->createAsset<AssetTexture>("layer0.png")->get(); //DO REAL CASTING
-    //if this doesnt work then have a local texture asset!
-    int rect_x = size_x / num_tiles;
-    int rect_y= size_y / num_tiles;
-    if(!world_texture.loadFromFile(world_texturename)){
-        if(!world_texture.loadFromFile(resourcePath() + "layer0.png"))
-            return false;
-    }
     TextureMapAsset* t_map = static_cast<TextureMapAsset*>( assets->createAsset<AssetTextureMap>("tilemap.png"));
     t_map->setSavePath(world_path);
     //should just give texture name to tilemanager which can call the worlds asset manager.. somehow.. OR just pass the * to the asset and it can flag as unneeded itself, world can run the check!
@@ -56,10 +49,10 @@ bool WorldManager::CreateWorld(WorldTypes type, int sizeX, int sizeY, int num_ti
     //add world objects
     
     //lighting
-    
+    renderables[RENDER_LIGHTLAYER].push_back(new LightingManager(WIN_X,WIN_Y));
     //
     createdWorld = true;
-    
+    logger.silent("WorldManager: Created World " + name);
     return true;
 }
 
@@ -67,7 +60,8 @@ bool WorldManager::SaveWorld(std::string to_save){
     sf::RenderTexture* edited = new sf::RenderTexture();
     //engine-render(rendertext)
     
-    edited->create(size_x,size_y);
+    if(!edited->create(size_x,size_y))
+        return;
     edited->clear();
     for ( auto const &layer : renderables ){
         for (auto const &toSave : layer){

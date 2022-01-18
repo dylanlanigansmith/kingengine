@@ -9,6 +9,7 @@
 #include "TileMap.hpp"
 #include "filereadstream.h"
 #include "istreamwrapper.h"
+#include <fstream>
 
 bool TileMap::load( sf::Vector2u tileSize)
 {
@@ -90,7 +91,7 @@ void TileMap::update(){
 
 bool TileMapInformation::loadJSON(){
     using namespace rapidjson;
-   
+    logger.silent("AssetMgr: Loading TileMap JSON");
     std::ifstream read(path.c_str());
     IStreamWrapper isw(read);
     Document document;
@@ -115,17 +116,40 @@ bool TileMapInformation::loadJSON(){
     tile_size_y = getIntMember("tile_size_y", document);
     if(document.HasMember("mapping")){
         if(document["mapping"].IsObject()){
+           int added = 0;
            for(auto& map : document["mapping"].GetObject()){
                name_to_position.insert(std::pair<std::string, int>(map.name.GetString(), map.value.GetInt() ) );
+               added++;
            }
+            logger.silent("AssetMgr: Tilemapped " + std::to_string(added) + " textures for " + tilemap_name);
         }
+        else{
+            logger.fatal_error("AssetMgr: TileMap JSON 'mapping' is not an object");
+            return false;
+        }
+    }
+    else{
+        logger.fatal_error("AssetMgr: TileMap JSON has no member 'mapping'");
+        return false;
     }
     if(document.HasMember("data")){
         if(document["data"].IsArray()){
+            
+            int added = 0;
            for(auto& tile_data : document["data"].GetArray()){
                tiles.push_back(tile_data.GetInt());
+               added++;
            }
+            logger.silent("AssetMgr: Loaded Tiledata for " + std::to_string(added) + "t iles in " + tilemap_name);
         }
+        else{
+            logger.fatal_error("AssetMgr: TileMap JSON 'data' is not an array");
+            return false;
+        }
+    }
+    else{
+        logger.fatal_error("AssetMgr: TileMap JSON has no member 'data'");
+        return false;
     }
     
     return true;
@@ -167,8 +191,18 @@ bool TileMapInformation::createJSON(){
     std::ofstream file(path.c_str());
     file << buffer.GetString();
     file.close();
-    
+    if(!file){
+      
+        logger.fatal_error("AssetMgr: TileMap JSON could not create at " + path);
+        return false;
+        
+       
+    }
     std::ifstream read(path.c_str());
+    if(!read){
+        logger.fatal_error("AssetMgr: TileMap JSON could not read file created at " + path);
+        return false;
+    }
     IStreamWrapper isw(read);
     Document document;
     document.ParseStream(isw);
@@ -239,6 +273,13 @@ bool TileMapInformation::saveJSON(){
     Writer<StringBuffer> writer(buffer);
     doc.Accept(writer);
     std::ofstream file(path.c_str());
+    if(!file){
+      
+        logger.fatal_error("AssetMgr: TileMap JSON could not save to " + path);
+        return false;
+        
+       
+    }
     file << buffer.GetString();
     file.close();
     std::cout << "saved to " << path << std::endl;

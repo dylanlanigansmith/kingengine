@@ -51,7 +51,7 @@ public:
         return;
     }
    
-    virtual bool load(std::string) = 0;
+    [[nodiscard]] virtual bool load(std::string) = 0;
     AssetTypes getType(){
         return type;
     }

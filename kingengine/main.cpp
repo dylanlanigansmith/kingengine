@@ -29,22 +29,28 @@
  https://github.com/SFML/SFML/wiki/Tutorial%3A-Basic-Game-Engine
 ^some good ideas that u were on the right track of before 
 */
-//#define OLDMAIN
-#ifndef OLDMAIN
+
 //https://bromeon.ch/articles/raii.html
-extern GameEngine* engine;
+
 
 int main(int, char const**)
 {
-    std::cout << "Starting Engine Instance: " << ENGINE_NAME << " " << ENGINE_VERSION << std::endl;
-    
+    LogManager logger = LogManager();
+  
+    logger << "Starting Engine Instance: " << ENGINE_NAME << " " << ENGINE_VERSION << lm::endl;
     
     engine = new GameEngine();
-    engine->setup();
+    if(!engine->setup())
+        logger.fatal_error("Game Engine Setup Failed");
+    else
+        logger << "Engine setup successful, Starting Loop" << lm::endl;
     engine->loop();
-    if(engine->shouldQuit())
+    if(engine->shouldQuit()){
+        
         return EXIT_SUCCESS;
-    
+    }
+        
+   
     return EXIT_FAILURE;
     
     
@@ -52,28 +58,3 @@ int main(int, char const**)
 
 
 
-#endif
-#ifdef OLDMAIN
-#include "Player.hpp"
-#include "World.hpp"
-#include "Tile.hpp"
-//someday this will be run from an app and a bunch of data, that just imports the engine!
-
-   // sunBlend.colorEquation = sf::BlendMode::Add;
-    
-    
-   // sunBlend.colorSrcFactor = sf::BlendMode::OneMinusSrcColor;
-    //sunBlend.colorEquation = sf::BlendMode::ReverseSubtract;
-    //Purple Hue:  sf::BlendMode sunBlend(sf::BlendMode::OneMinusSrcColor, sf::BlendMode::DstColor,sf::BlendMode::ReverseSubtract, sf::BlendMode::SrcAlpha, sf::BlendMode::OneMinusSrcAlpha, sf::BlendMode::ReverseSubtract);
-    
-    /* Blue Tone
-     sf::BlendMode sunBlend = sf::BlendMultiply;
-     sunBlend.colorDstFactor = sf::BlendMode::DstColor;
-     sunBlend.colorSrcFactor = sf::BlendMode::OneMinusSrcColor;
-     sunBlend.colorEquation = sf::BlendMode::Add;
-     */
-    //sf::RenderStates(sf::BlendMultiply)
-    
-
-   
-#endif

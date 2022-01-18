@@ -10,7 +10,7 @@
 #define defines_h
 
 #define ENGINE_NAME "KING-ENGINE"
-#define ENGINE_VERSION "0.01"
+#define ENGINE_VERSION "0.02"
 
 //PLATFORM
 #define MAC_ARM64 "mac_arm64"
@@ -27,6 +27,7 @@
 #define RENDER_LAYERS 3
 #define RENDER_LAYERSIZE 32
 #define RENDER_BASELAYER 0
+#define RENDER_LIGHTLAYER 1
 #define TILEMANAGER_INDEX 0
 #endif /* defines_hpp */
 

@@ -41,42 +41,50 @@ GameEngine::~GameEngine(){
 
 bool GameEngine::setup(){
     //https://bromeon.ch/articles/raii.html
-    window = new sf::RenderWindow(sf::VideoMode(winX, winY),WIN_TITLE);
+    window = new sf::RenderWindow(sf::VideoMode(winX, winY),WIN_TITLE,sf::Style::Titlebar | sf::Style::Close);
     window->setVerticalSyncEnabled(WINOPT_VSYNC);
     player_view = window->getDefaultView();
-    
-    log(std::string("Created Window: ") + std::to_string(winX) + std::string("x") + std::to_string(winY));
-    ImGui::SFML::Init(*window);
+    if(!window->isOpen()){
+            logger.fatal_error("Could not open window"); return false;
+    }
+    logger << "Window (" << winX << "x" << winY << "): OK"<< lm::endl;
+        
+    if(!ImGui::SFML::Init(*window)){
+        logger.fatal_error("ImGui Init Failed"); return false;
+    }
+    else
+        logger.silent("ImGui Init Successful");
     imIO = ImGui::GetIO();
     if(!defaultFont.loadFromFile(resourcePath() + WIN_DEFAULTFONT)){
-        log(std::string("Could not load: ") + WIN_DEFAULTFONT);
-        
-        return false;
+      logger.error("Could not load font: " + std::string(WIN_DEFAULTFONT));
+      return false;
     }
     else imIO.Fonts->AddFontFromFileTTF(std::string(resourcePath() + WIN_DEFAULTFONT).c_str(), 12.f);
-    ImGui::SFML::UpdateFontTexture();
-    log("Initialized Fonts and ImGui");
+    if(!ImGui::SFML::UpdateFontTexture())
+        logger.error("Could not update IMGUI font");
+    logger << "ImGui/Fonts OK" << lm::endl;
+    
     dev = new DevTools(0);
     //CREATE WORLD
-    log("Creating World ");
+    logger.silent("Creating Default WorldManager");
     worlds.push(new WorldManager());
     world = worlds.top();
-    
-    
+    if(world->world_name.length() > 2)
+        logger << "WorldManager: OK" << lm::endl;
     
    // world->CreateWorld(DefaultWorld, 2048, 2048, 64, "Test World", "savedworld.png");
 
     //INIT SETTINGS FOR WORLD
-    log("World: Loading Level and Settings");
+//    logger << "World: Loading Level and Settings" << lm::endl;
     
     //INIT ENTITIES & PLAYER
-    log("World: Init Entities & Player");
+  //  log("World: Init Entities & Player");
     
-    log("Player: All good");
+   // log("Player: All good");
     
-    log("Starting Loop");
+    logger << "Engine: OK" << lm::endl;
     
-   
+    return true;
 }
 void GameEngine::loop(){
     while(window->isOpen()){
@@ -103,29 +111,30 @@ void GameEngine::loop(){
         
         //see where tf that should go
         mouseposition = sf::Mouse::getPosition(*window);
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {
-            TileManager& tile_mgr = (TileManager&) *(world->renderables[RENDER_BASELAYER][TILEMANAGER_INDEX]);
-            
-          
-           
-            
-        }
         
-        //gui and debug, most should get moved to devtools
-        ImGui::SFML::Update(*window, game_clock.restart());
+        
        
+        //gui and debug, most should get moved to devtools//GUI mgr should own devtolls
+        ImGui::SFML::Update(*window, game_clock.restart());
         gui();
+      
         window->clear();
         
-        
-       
+        /*
+        for(auto const &layer : *getList()){
+            for( auto const &toRender : layer ) {
+                toRender->draw(*window);
+            }
+        }*/
        
         
         for( auto const &toRender : *getListAtLayer(RENDER_BASELAYER) ) {
             toRender->draw(*window);
         }
-        debug(0);
+        for( auto const &toRender : *getListAtLayer(RENDER_LIGHTLAYER) ) {
+            toRender->draw(*window);
+        }
+        debug(0);//run dev rendering
         
         
         ImGui::SFML::Render(*window);
@@ -142,10 +151,7 @@ bool GameEngine::shouldQuit(){
     return !run;
 }
 
-void GameEngine::log(std::string msg){
-    std::string toLog = msg;
-    std::cout << toLog << std::endl;
-}
+
 void GameEngine::gui(){
     //if debug
     debugGUI(0);

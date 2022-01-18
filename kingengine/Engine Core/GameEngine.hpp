@@ -50,34 +50,32 @@ private:
     //TextureManager textures;
     bool run;
     void gui();
-    const char*  WorldTypes[3] =
-    {
-        "TopView",
-        "Ray Trace",
-        "Test",
-    };
+ 
     void debugGUI(int mode = 0);
     void debug(int mode = 0);
     friend class DevTools;
     const std::vector< std::vector< Renderable*> >* getList();
     const std::vector< Renderable*>* getListAtLayer(int);
-    
-public:
-    std::stack<WorldManager*> worlds;
     WorldManager* world;
     DevTools* dev;
+public:
+    std::stack<WorldManager*> worlds;
+    WorldManager* ActiveWorld(){
+        if(world->createdWorld)
+            return world;
+    }
     GameEngine();
     ~GameEngine();
-    bool setup();
+    [[nodiscard]] bool setup();
     bool shouldQuit();
     void loop();
-    void log(std::string msg);
+  
     sf::Vector2i getMousePosition();
     bool getLeftClick();
     bool isPointInCurrentView(sf::Vector2f);
     void moveView(sf::Vector2f);
     
 };
-
+extern GameEngine* engine;
 
 #endif /* GameEngine_hpp */

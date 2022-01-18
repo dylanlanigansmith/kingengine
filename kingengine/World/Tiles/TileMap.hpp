@@ -48,10 +48,12 @@ public:
     }
     void update(int x, int y, const std::string& name){
         int idx = (x / tile_size_x) + ( (y / tile_size_y)*32);
-        if(name_to_position.find(name) != name_to_position.end())
+        if((name_to_position.find(name) != name_to_position.end()) && idx < tiles.size())
             tiles[idx] = name_to_position[name];
+        else if( idx < tiles.size())
+            logger << "no tile for " << name << lm::endl;
         else
-            std::cout << "no tile for " << name;
+            logger.silent("out of range tile at XY: " + std::to_string(x) + std::to_string(y));
     }
 };
 

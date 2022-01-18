@@ -9,10 +9,10 @@
 #ifndef LightSource_hpp
 #define LightSource_hpp
 
+
 #include "WorldObject.hpp"
 
-
-class LightSource : public WorldObject{
+class LightSource : public WorldObject {
     sf::Color color;
     float intensity;
     
@@ -24,15 +24,5 @@ public:
     virtual void draw(sf::RenderTarget& target) const override;
 };
 
-class LightingManager : public WorldObject { //debatable
-    std::vector<LightSource *> lights;
-    
-public:
-    void addLightSource(LightSource);
-    void createFixedMap(sf::RenderTexture&);
-    
-    LightingManager();
-    ~LightingManager();
-    
-};
+
 #endif /* LightSource_hpp */

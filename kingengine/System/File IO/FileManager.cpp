@@ -9,7 +9,7 @@
 #include "FileManager.hpp"
 #include "FolderManager.h"
 #include "defines.hpp"
-
+#include "LogManager.hpp"
 
 //Wrapper for system specific file handlers
 #ifdef MAC_ARM64
@@ -20,20 +20,22 @@ using namespace fm;
 FileManager::FileManager(){
     
 
-    std::cout << "Using Filemanager for: " << PLATFORM;
+    logger.silent("FileManager: Init for " + std::string(PLATFORM));
     supportPath=NULL;
     FolderManager folderManager;
         supportPath = (char *)folderManager.pathForDirectory(NSApplicationSupportDirectory, NSUserDomainMask);
     if(supportPath){
-        std::cout << "Found Store Path: "<< supportPath << std::endl;
+        logger.silent("Found Application Support Path: " + std::string(supportPath));
         app_folder = supportPath + std::string(APP_FOLDER);
-        std::cout << "Attempting to create/find app folder: "<< app_folder << std::endl;
-        std::cout << "Returned: " << folderManager.createDirectoryFromPath(app_folder.c_str()) << std::endl;
-        
-        
-        
+        logger.silent("Attempting to create/find app folder: " + app_folder);
+        bool success = folderManager.createDirectoryFromPath(app_folder.c_str());
+        if(!success)
+            logger.fatal_error("File Mgr: createDirectoryFromPath(app_folder) returned false");
+            //did i even implement this shit
+        else
+            logger.silent("Attempting to create/find app folder: " + app_folder);
     }
-    
+    logger << "FileManager: OK" << lm::endl;
    
     
     
@@ -47,9 +49,13 @@ FileManager::~FileManager(){
 std::string FileManager::makeWorldFolder(std::string name){
     FolderManager folderManager;
     std::string path = app_folder + WORLD_FOLDER + "/" + name + "/"; //this might be a problem
-    std::cout << path << std::endl;
+    logger.silent("Making World Folder at " + path);
     if(folderManager.createDirectoryFromPath(path.c_str())){
+        logger.silent("Made Folder for " + name +" successfully");
         return path;
+    }
+    else{
+        logger.fatal_error("File Mgr: createDirectoryFromPath("+path+") returned false");
     }
     
 }
@@ -68,7 +74,7 @@ bool FileManager::saveWorld(rapidjson::Document* data, std::string path){
         file.close();
     }
     else{
-        std::cout << "FileMgr: No app folder path on record!" << std::endl;
+        logger.fatal_error("FileMgr: No app folder path on record!");
     }
 }
 
@@ -106,6 +112,7 @@ void FileManager::getFolders(const std::string& name, std::vector<std::string> &
     FolderManager folderManager;
     //not using name yet
     std::string path = app_folder + WORLD_FOLDER + "/"; //this might be a problem
+                                                        //update: ig it wasnt
     folderManager.contentsOfDirectory(path.c_str(), list);
     
     
