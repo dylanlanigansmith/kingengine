@@ -15,6 +15,7 @@
 
 #include "Tiles.hpp"
 #include "TileMap.hpp"
+#include "LightingManager.hpp"
 
 enum WorldTypes{
     DefaultWorld = 0,
@@ -44,7 +45,7 @@ public:
     TileMap& getTileMap();
     WorldManager();
     ~WorldManager();
-    
+    LightingManager& getLightingManager();
     
 };
 

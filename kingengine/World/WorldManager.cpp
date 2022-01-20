@@ -45,11 +45,13 @@ bool WorldManager::CreateWorld(WorldTypes type, int sizeX, int sizeY, int num_ti
     t_map->setSavePath(world_path);
     //should just give texture name to tilemanager which can call the worlds asset manager.. somehow.. OR just pass the * to the asset and it can flag as unneeded itself, world can run the check!
    // renderables[RENDER_BASELAYER].push_back(new TileManager(size_x, size_y, rect_x, rect_y, &world_texture) ); //TILEMANAGER_INDEX = 0
-    renderables[RENDER_BASELAYER].push_back(new TileMap(t_map, sf::Vector2u(32,32)));
-    //add world objects
+   
     
     //lighting
     renderables[RENDER_LIGHTLAYER].push_back(new LightingManager(WIN_X,WIN_Y));
+    
+    renderables[RENDER_BASELAYER].push_back(new TileMap(t_map, sf::Vector2u(32,32)));
+    //add world objects
     //
     createdWorld = true;
     logger.silent("WorldManager: Created World " + name);
@@ -85,6 +87,11 @@ bool WorldManager::SaveWorld(std::string to_save){
 TileMap& WorldManager::getTileMap(){
     return (TileMap&)*(renderables[RENDER_BASELAYER][TILEMANAGER_INDEX]); //greasy
     //use static cast or something
+}
+LightingManager& WorldManager::getLightingManager(){
+if(renderables.size() > 1)
+    return (LightingManager&)*(renderables[RENDER_LIGHTLAYER][0]); //TODO
+    //learning how casting works
 }
 
 void WorldManager::updateWorld(){

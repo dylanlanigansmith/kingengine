@@ -115,6 +115,11 @@ void FileManager::getFolders(const std::string& name, std::vector<std::string> &
                                                         //update: ig it wasnt
     folderManager.contentsOfDirectory(path.c_str(), list);
     
+    for(int i = 0; i < list.size(); i++){
+        if(list.at(i) == ".DS_Store"){
+            list.erase(list.begin()+i);
+        }
+    }
     
 }
 #endif

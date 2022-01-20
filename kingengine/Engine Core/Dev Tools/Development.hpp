@@ -46,7 +46,8 @@ enum DevEditorMode{
     MoveMode,
     PaintMode,
     AddMode,
-    RemoveMode
+    RemoveMode,
+    LightingEditor,
 };
 
 struct PaintCommand{
@@ -106,11 +107,22 @@ private:
     sf::Color arrayToColor(float*);
     
     std::stack<PaintCommand> paintundo;
+    
+    //LIGHTING
+    bool enableLighting = false;
+    bool isAddingLight = true;
+    sf::CircleShape c;
+    float lightOpts[3] = {2.f,1.f,120.f};
+    float shadowOpts[3] = {0.3f,0.2f,40.f};
+    bool drawRays = false;
 public:
     DevTools(int);
     void runGUI();
     ~DevTools();
     void render(sf::RenderTarget& target);
+    bool displayLighting(){
+        return enableLighting; 
+    }
     
 };
 #endif /* Development_hpp */

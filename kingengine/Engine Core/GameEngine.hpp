@@ -71,10 +71,13 @@ public:
     void loop();
   
     sf::Vector2i getMousePosition();
+    sf::Vector2f getWorldMousePosition();
     bool getLeftClick();
     bool isPointInCurrentView(sf::Vector2f);
     void moveView(sf::Vector2f);
-    
+    sf::View getView(){
+        return window->getView();
+    }
 };
 extern GameEngine* engine;
 

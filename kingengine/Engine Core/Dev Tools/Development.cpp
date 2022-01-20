@@ -14,7 +14,7 @@
 #include "stringbuffer.h"
 #include "custom_imgui.h"
 
-
+#include "LightingManager.hpp"
 DevTools::DevTools(int setMode){
     GUIMode = GUISelectMode;
     toolMode = setMode;
@@ -31,7 +31,12 @@ DevTools::DevTools(int setMode){
     fm = new FileManager();
     fm->getFolders("", worldnames);
     activePath = resourcePath();
-  
+    
+    enableLighting = false;
+    isAddingLight = false;
+    c.setRadius(64.f);
+    c.setFillColor(sf::Color::Yellow);
+    
     
 }
 DevTools::~DevTools(){
@@ -56,6 +61,15 @@ void DevTools::render(sf::RenderTarget& target){
             
         }
     }
+    if(EditorMode == LightingEditor) {
+        if(isAddingLight && !isGUIFocused){
+            sf::Vector2f mouse_pos = engine->getWorldMousePosition();
+            
+            c.setFillColor(sf::Color::Yellow);
+            c.setPosition(mouse_pos);
+            target.draw(c);
+        }
+    }
 }
 
 void DevTools::runGUI(){
@@ -72,6 +86,7 @@ void DevTools::runGUI(){
         if(ImGui::Button("Edit Object")){
             GUIMode = ObjectEditor;
         }
+        
         ImGui::End();
     }
     if(GUIMode == WorldLoader){
@@ -176,10 +191,63 @@ void DevTools::runGUI(){
             EditorMode = MoveMode;
         if(ImGui::Button("Paint Tile"))
             EditorMode = PaintMode;
-        
+        if(ImGui::Button("Lighting")){
+            EditorMode = LightingEditor;
+        }
         
         if(ImGui::Button("SAVE")){
             engine->world->getTileMap().getInfo()->save();
+            
+        }
+        if(EditorMode == LightingEditor){
+            ImGui::Text("Lighting Editor");
+            ImGui::Separator();
+            ImGui::Checkbox("Enable Lighting", &enableLighting);
+            if(ImGui::Button("Add Light Source")){
+                isAddingLight = true;
+            }
+            if(isAddingLight){
+                ImGui::Text("Adding light at next mouse click");
+                if(engine->getLeftClick() && !isGUIFocused){
+                    LightSource toAdd;
+                    toAdd.setIntensity(lightOpts[0]);
+                    toAdd.setFalloff(lightOpts[1]);
+                    toAdd.setRadius(lightOpts[2]);
+                    toAdd.setColor(sf::Color::White);
+                    //IFR
+                    engine->world->getLightingManager().setShadow(shadowOpts[0], shadowOpts[1], shadowOpts[2]);
+                    if(showColorPicker){
+                        toAdd.setColor(arrayToColor(colorPicker));
+                    }
+                    toAdd.setPosition(engine->getWorldMousePosition());
+                    engine->world->getLightingManager().addLightSource(toAdd);
+                    engine->world->getLightingManager().update();
+                    isAddingLight = false;
+                }
+            }
+            ImGui::Text("255 - (R * F + I");
+            ImGui::InputFloat3("I, F, R", lightOpts);
+            ImGui::Text("ang=I, 255*F, itr=R");
+            ImGui::InputFloat3("Shadow", shadowOpts);
+            if(ImGui::Button("Update Lightmap")){
+                engine->world->getLightingManager().update();
+                engine->world->getLightingManager().setDebug(drawRays);
+            }
+            if(ImGui::Button("Clear Lightmap")){
+                engine->world->getLightingManager().clearLights();
+            }ImGui::SameLine();
+            if(ImGui::Button("Clear Edges")){
+                engine->world->getLightingManager().clearEdges();
+            }ImGui::SameLine();
+            ImGui::Checkbox("Draw Rays", &drawRays);
+            ImGui::Text("Number of lights %i",  engine->world->getLightingManager().numberOfLights());
+            ImGui::Checkbox("Show Color Picker", &showColorPicker);
+            if(showColorPicker){
+                ImGuiColorEditFlags flags = 0;
+                flags = flags | ImGuiColorEditFlags_NoAlpha;
+            
+     ImGui::ColorPicker4("Tile Color", colorPicker, flags);
+            }
             
         }
         if(EditorMode == MoveMode){
@@ -251,8 +319,13 @@ void DevTools::runGUI(){
                             engine->world->getTileMap().getInfo()->update(mouse_posf.x + (30), mouse_posf.y, tilenames.at(selectedTile));
                         }
                         else if(brushsize == 3){
-                            engine->world->getTileMap().getInfo()->update(mouse_posf.x + (30), mouse_posf.y, tilenames.at(selectedTile));
-                            engine->world->getTileMap().getInfo()->update(mouse_posf.x - (30), mouse_posf.y, tilenames.at(selectedTile));
+                            for (int i = 1; i <= 15; i++){
+                            engine->world->getTileMap().getInfo()->update(mouse_posf.x + i*(30), mouse_posf.y, tilenames.at(selectedTile));
+                            engine->world->getTileMap().getInfo()->update(mouse_posf.x - i*(30), mouse_posf.y, tilenames.at(selectedTile));
+                            engine->world->getTileMap().getInfo()->update(mouse_posf.x, mouse_posf.y - i*(30), tilenames.at(selectedTile));
+                            engine->world->getTileMap().getInfo()->update(mouse_posf.x , mouse_posf.y + i*(30), tilenames.at(selectedTile));
+                            }
+
                         }
                         else if(brushsize > 3){ //redundant
                             for(int i = 1; i <= (brushsize -3); i++){
@@ -267,18 +340,15 @@ void DevTools::runGUI(){
                                 engine->world->getTileMap().getInfo()->update(mouse_posf.x + (i*30), mouse_posf.y - (i*30), tilenames.at(selectedTile));
                                 engine->world->getTileMap().getInfo()->update(mouse_posf.x - (i*30), mouse_posf.y - (i*30), tilenames.at(selectedTile));
                                 engine->world->getTileMap().getInfo()->update(mouse_posf.x, mouse_posf.y - (i*30), tilenames.at(selectedTile));
-                                
-                                
                             }
                         }
-                        
                     }
                     engine->world->getTileMap().load(sf::Vector2u(32,32));
                    // engine->world->getTileManager().setTileColor(sf::Color(colorPicker[0] * 255,colorPicker[1] * 255,colorPicker[2] * 255, 255), mouse_posf.x,mouse_posf.y);
                 }
             }
-            
         }
+        
         //finish base shit 
         //NEXT: Sprite adding
      

@@ -103,9 +103,10 @@ void GameEngine::loop(){
             // Escape pressed: exit FORNOW
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window->close();
+                run = false;
             }
         }
-        if(run == false) break;
+        
         //lets do some input
         
         
@@ -131,9 +132,13 @@ void GameEngine::loop(){
         for( auto const &toRender : *getListAtLayer(RENDER_BASELAYER) ) {
             toRender->draw(*window);
         }
-        for( auto const &toRender : *getListAtLayer(RENDER_LIGHTLAYER) ) {
-            toRender->draw(*window);
+        if(dev->displayLighting()){
+            //world->getLightingManager().update();
+            for( auto const &toRender : *getListAtLayer(RENDER_LIGHTLAYER) ) {
+                toRender->draw(*window);
+            }
         }
+        
         debug(0);//run dev rendering
         
         
@@ -184,6 +189,9 @@ bool GameEngine::isPointInCurrentView(sf::Vector2f point){
 
 sf::Vector2i GameEngine::getMousePosition(){
     return sf::Mouse::getPosition(*window);
+}
+sf::Vector2f GameEngine::getWorldMousePosition(){
+    return window->mapPixelToCoords(sf::Mouse::getPosition(*window));
 }
 bool GameEngine::getLeftClick(){
     return sf::Mouse::isButtonPressed(sf::Mouse::Left);

@@ -10,7 +10,7 @@
 #include "filereadstream.h"
 #include "istreamwrapper.h"
 #include <fstream>
-
+#include "GameEngine.hpp"
 bool TileMap::load( sf::Vector2u tileSize)
 {
    
@@ -18,7 +18,7 @@ bool TileMap::load( sf::Vector2u tileSize)
     unsigned int width = 32;
     unsigned int height = 32;
     
-    
+    engine->ActiveWorld()->getLightingManager().clearEdges();
 
     // resize the vertex array to fit the level size
     m_vertices.setPrimitiveType(sf::Triangles);
@@ -59,8 +59,13 @@ bool TileMap::load( sf::Vector2u tileSize)
             quad[3].texCoords = sf::Vector2f(tu * tileSize.x, tv * tileSize.y);
             quad[4].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv ) * tileSize.y);
             quad[5].texCoords = sf::Vector2f(( tu+1) * tileSize.x, (tv + 1) * tileSize.y);
+            
+            if(tileNumber == 8){
+                engine->ActiveWorld()->getLightingManager().addEdges(sf::Rect<float>(sf::Vector2f(i * tileSize.x, j * tileSize.y), sf::Vector2f(tileSize.x, tileSize.y) ) ); 
+            }
+            
         }
-
+    engine->ActiveWorld()->getLightingManager().update();
     return true;
 }
 void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
