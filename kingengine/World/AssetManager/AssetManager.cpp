@@ -25,7 +25,7 @@ AssetManager::AssetManager(std::string wp){
 }
 AssetManager::~AssetManager(){
     for (auto const& asset : assets){
-        asset.second->~Asset();
+        //asset.second->~Asset();
         delete asset.second;
     }
     assets.clear();

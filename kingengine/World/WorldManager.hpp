@@ -35,8 +35,10 @@ private:
     int size_x,size_y;
     bool createdWorld;
     AssetManager* assets;
+    std::string activePath;
 public:
     friend class GameEngine;
+    friend class DevTools;
     virtual bool CreateWorld(WorldTypes, int, int, int, std::string, std::string); //
     virtual bool SaveWorld(std::string);
     virtual void renderWorld();

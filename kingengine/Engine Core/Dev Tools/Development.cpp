@@ -34,6 +34,8 @@ DevTools::DevTools(int setMode){
     
     enableLighting = false;
     isAddingLight = false;
+    drawShadows = false;
+    drawRays = false;
     c.setRadius(64.f);
     c.setFillColor(sf::Color::Yellow);
     
@@ -185,6 +187,8 @@ void DevTools::runGUI(){
         ImGui::SetNextWindowSize(ImVec2(WIN_X / 4, WIN_Y / 2));
         ImGui::Begin("World Creator", &renderGUI);
         isGUIFocused = ImGui::IsWindowFocused();
+        if(ImGui::Button("New"))
+            EditorMode = AddNew;
         if(ImGui::Button("Select"))
             EditorMode = EditorSelectMode;
         if(ImGui::Button("Move"))
@@ -232,6 +236,7 @@ void DevTools::runGUI(){
             if(ImGui::Button("Update Lightmap")){
                 engine->world->getLightingManager().update();
                 engine->world->getLightingManager().setDebug(drawRays);
+                engine->world->getLightingManager().setShadows(drawShadows);
             }
             if(ImGui::Button("Clear Lightmap")){
                 engine->world->getLightingManager().clearLights();
@@ -240,6 +245,7 @@ void DevTools::runGUI(){
                 engine->world->getLightingManager().clearEdges();
             }ImGui::SameLine();
             ImGui::Checkbox("Draw Rays", &drawRays);
+            ImGui::Checkbox("Draw Shadows", &drawShadows);
             ImGui::Text("Number of lights %i",  engine->world->getLightingManager().numberOfLights());
             ImGui::Checkbox("Show Color Picker", &showColorPicker);
             if(showColorPicker){
@@ -361,7 +367,36 @@ void DevTools::runGUI(){
         
         ImGui::End();
     }
-    
+    if(EditorMode == AddNew){
+        ImGui::SetNextWindowPos(ImVec2( WIN_X / 4,WIN_Y / 4));
+        ImGui::SetNextWindowSize(ImVec2(WIN_X / 2, WIN_Y / 2));
+        ImGui::Begin("New Renderable");
+        ImGui::Separator();
+        if(ImGui::Button("Back")){
+            EditorMode = EditorSelectMode;
+        }ImGui::SameLine();
+        if(ImGui::Button("Create")){
+            
+        }
+        ImGui::Combo("Type",  &selectedNewType, NewTypes, 10);
+        ImGui::Separator();
+        
+        switch (selectedNewType){
+            case 0:
+                ImGui::Separator();
+                break;
+            case 1:
+                ImGui::InputText("Name", newName, sizeof(newName));
+                ImGui::Text("Path: %s", std::string(engine->world->activePath + std::string(newName)).c_str() );
+                break;
+            default:
+                ImGui::Text("Not yet....");
+                break;
+                
+                
+        }
+        ImGui::End();
+    }
     
     
    

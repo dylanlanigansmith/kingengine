@@ -39,6 +39,7 @@ enum DevGUIMode{
     WorldLoader,
     WorldEditor,
     ObjectEditor,
+    
 };
 
 enum DevEditorMode{
@@ -48,6 +49,7 @@ enum DevEditorMode{
     AddMode,
     RemoveMode,
     LightingEditor,
+    AddNew,
 };
 
 struct PaintCommand{
@@ -115,6 +117,25 @@ private:
     float lightOpts[3] = {2.f,1.f,120.f};
     float shadowOpts[3] = {0.3f,0.2f,40.f};
     bool drawRays = false;
+    bool drawShadows= false;
+    
+    //CREATOR
+    int selectedNewType = 0;
+    char newName[50] = {"name"};
+    const char*  NewTypes[10] =
+    {
+        "-select-",
+        "Background",
+        "Tilemap",
+        "Entity",
+        "Animation",
+        "Camera",
+        "WorldObject",
+        "LightSource",
+        "Particle System",
+        "Player"
+        
+    };
 public:
     DevTools(int);
     void runGUI();

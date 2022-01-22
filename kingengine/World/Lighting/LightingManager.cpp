@@ -55,13 +55,18 @@ void LightingManager::castRay(const LightSource& light, sf::RenderTexture& win) 
     float intensity = light.intensity;
     int rad = light.radius;
     
-    
+    sf::BlendMode masksCombining = sf::BlendAdd;
+    masksCombining.colorEquation = sf::BlendMode::Add;
+    masksCombining.alphaEquation = sf::BlendMode::ReverseSubtract;
    
+    sf::BlendMode shadowBlend = sf::BlendAdd;
+    masksCombining.colorEquation = sf::BlendMode::Subtract;
+    masksCombining.alphaEquation = sf::BlendMode::Subtract;
    
-    
+    sf::BlendMode lightBlend(sf::BlendMode::SrcColor, sf::BlendMode::DstColor,sf::BlendMode::Subtract, sf::BlendMode::SrcAlpha, sf::BlendMode::OneMinusSrcAlpha, sf::BlendMode::Subtract);
     std::vector<Vertex> circle;
     circle.push_back(Vertex(sf::Vector2f(origin), light_c) );
-    
+    std::vector<std::vector<sf::Vertex>> shadow_c;
     for(float ang = 0; ang <= ( M_PI * 2.f); ang += 0.01f){
         std::vector<Vertex> ray;
         
@@ -72,16 +77,41 @@ void LightingManager::castRay(const LightSource& light, sf::RenderTexture& win) 
         cur_pt = origin + (unit_vec);
         int itr = 0;
         bool hit = false;
-        while( itr < rad && currentViewRect.contains(cur_pt) && !hit){
+ 
+        while( itr < rad && currentViewRect.contains(cur_pt) ){
             for(const auto &r : edges){
+                
+                //for every edge there should be an associated shadow for each index
+                //if (object draw shadow)
+                // add object + light + angle/unit vec to shadow draws
+                //do that seperate from the objects shape,
                 if(r.contains(cur_pt)){
                     sf::Vector2f front = cur_pt;
-                    while(r.contains(cur_pt))
-                        cur_pt += unit_vec;
+                    sf::Vector2f cur_pt_s = front;
+                    while(r.contains(cur_pt_s))
+                        cur_pt_s += unit_vec;
                     //CAST SHADOW NOW
                     if(!castShadows){
+                        
                         hit = true; break;
                     }
+                    std::vector<sf::Vertex> shadow_v;
+                   // light_c.a = light_c.a /2;
+                    shadow_v.push_back( Vertex(sf::Vector2f(cur_pt_s), light_c));
+                    sf::Vector2f back = cur_pt_s;
+                    sf::Vector2f shadow =  back - front;
+                    int length = sqrt(pow(shadow.x, 2) + pow(shadow.y,2));
+                   // length = (length < shadow_radius) ? shadow_radius : length;
+                    for (int i = length; i > 0; i--){
+                        back += unit_vec;
+                    }
+                    sf::Color sc = light_c;
+                    sc.a -= (sc.a - shadow_falloff) / shadow_intensity;
+                    shadow_v.push_back( Vertex(sf::Vector2f(back), sc));
+                    shadow_c.push_back(shadow_v);
+                    //hit = true;
+                    break;
+                    /*
                     sf::Vector2f back = cur_pt;
                     sf::Vector2f shadow =  back - front;
                     int length = sqrt(pow(shadow.x, 2) + pow(shadow.y,2));
@@ -106,22 +136,34 @@ void LightingManager::castRay(const LightSource& light, sf::RenderTexture& win) 
                     win.draw(&circle_s[0], circle_s.size(), sf::TriangleFan, RenderStates(sf::BlendAdd)); //<-likely the issue
                     if(debug)
                         win.draw(&ray_s[0], ray_s.size(), sf::Lines);
-                    hit = true; itr += 25; break;
+                    hit = true; itr += 25; break;*/
                 }
             }
-            if(!hit)
+          //  if(!hit)
                 cur_pt += unit_vec;
             itr++;
         }
         sf::Color falloff_c = light_c;
+        
+        //this is causing the bug with triangles appearing
         falloff_c.a = 255 - (itr * falloff) + intensity;
         circle.push_back( Vertex(cur_pt, falloff_c));
+       
         ray.push_back( Vertex(sf::Vector2f(cur_pt), falloff_c));
         if(debug)
             win.draw(&ray[0], ray.size(), sf::Lines);
         ray.clear();
     }
-    win.draw(&circle[0], circle.size(), sf::TriangleFan, RenderStates(sf::BlendAdd));
+    win.draw(&circle[0], circle.size(), sf::TriangleFan, shadowBlend);
+    
+    for (const auto &va : shadow_c){
+        if(va.size() > 0){
+            //this actually looks decent enough
+            win.draw(&va[0], va.size(), sf::Lines, lightBlend);
+        }
+      //http://www.andersriggelsen.dk/glblendfunc.php
+        //Check this out^^^
+    }
 }
 void LightingManager::createFixedMap(sf::RenderTexture & rt){
     
@@ -137,7 +179,7 @@ void LightingManager::update(){
     
     
     lightmap.display();
-    lightmap.setSmooth(true);
+   // lightmap.setSmooth(true);
 }
 void LightingManager::save(sf::RenderTarget& target) const{
     

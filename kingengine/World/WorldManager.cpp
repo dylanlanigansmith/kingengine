@@ -22,16 +22,20 @@ WorldManager::WorldManager(){
 
 WorldManager::~WorldManager(){
     delete assets;
-    
+    for(auto &layer : renderables){
+        std::vector<Renderable*>().swap(layer);
+    }
+    renderables.clear();
+   
 }
 
 
 
 //TILED WORLD
-bool WorldManager::CreateWorld(WorldTypes type, int sizeX, int sizeY, int num_tiles, std::string name, std::string world_path){
+bool WorldManager::CreateWorld(WorldTypes type, int sizeX, int sizeY, int num_tiles, std::string name, std::string world_path)  {
     logger.silent("WorldManager: Creating World " + name);
     assets = new AssetManager(world_path);
-    
+    activePath = world_path; 
     renderables.clear();
     //create tiles object
     createdWorld = false; //fuck

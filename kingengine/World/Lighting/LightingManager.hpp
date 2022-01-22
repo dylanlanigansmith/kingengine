@@ -40,6 +40,9 @@ public:
     void setDebug(bool t){
         debug = t;
     }
+    void setShadows(bool s){
+        castShadows = s;
+    }
 private:
     void castRay(const LightSource &light, sf::RenderTexture& win) const;
     const float PI = 3.1415926f;

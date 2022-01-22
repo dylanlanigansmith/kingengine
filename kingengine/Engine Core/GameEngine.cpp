@@ -106,7 +106,8 @@ void GameEngine::loop(){
                 run = false;
             }
         }
-        
+        if(!run)
+            break;
         //lets do some input
         
         
